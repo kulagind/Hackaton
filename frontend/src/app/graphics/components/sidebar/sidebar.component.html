@@ -8,19 +8,15 @@
   <div class="chips-container">
     <app-chips-container class="chips" [control]="control">
       <app-chip class="chips-chip">Платформа</app-chip>
-      <app-chip class="chips-chip">Tesdsft</app-chip>
-      <app-chip class="chips-chip">Tesdft</app-chip>
-      <app-chip class="chips-chip">Tessdft</app-chip>
-      <app-chip class="chips-chip">Tessdft</app-chip>
-      <app-chip class="chips-chip">Tesdsft</app-chip>
-      <app-chip class="chips-chip">Tesdft</app-chip>
-      <app-chip class="chips-chip">Tessdft</app-chip>
-      <app-chip class="chips-chip">Tessdft</app-chip>
+      <app-chip class="chips-chip">Контролы</app-chip>
+      <app-chip class="chips-chip">Поле ввода</app-chip>
     </app-chips-container>
   </div>
 
   <div class="container-content">
-      <app-platform></app-platform>
+    <app-platform *ngIf="control.selected.includes('Платформа')"></app-platform>
+    <app-form-fields *ngIf="control.selected.includes('Поле ввода')"></app-form-fields>
+    <app-controls *ngIf="control.selected.includes('Контролы')"></app-controls>
   </div>
 
 </div>

@@ -19,6 +19,8 @@ import { DesktopPlatformComponent } from './components/platform/components/deskt
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ChipsModule } from '../shared/modules/chips/chips.module';
+import { FormFieldsComponent } from './components/form-fields/form-fields.component';
+import { ControlsComponent } from './components/controls/controls.component';
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { ChipsModule } from '../shared/modules/chips/chips.module';
     MobilePlatformComponent,
     DesktopPlatformComponent,
     ToolbarComponent,
+    FormFieldsComponent,
+    ControlsComponent,
   ],
   imports: [
     CommonModule,
