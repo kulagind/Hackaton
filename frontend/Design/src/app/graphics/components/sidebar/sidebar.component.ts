@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+
+  public readonly control = new SelectionModel<string>(false, [ 'Платформа' ]);
 
   constructor() {
   }

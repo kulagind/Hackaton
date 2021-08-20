@@ -1,1 +1,5 @@
-<p>chips-container works!</p>
+<div class="scrollable-chips" (mousedown)="handleMouseDown($event)" #container>
+
+    <ng-content select="app-chip"></ng-content>
+
+</div>

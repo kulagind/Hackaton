@@ -18,6 +18,7 @@ import { MobilePlatformComponent } from './components/platform/components/mobile
 import { DesktopPlatformComponent } from './components/platform/components/desktop-platform/desktop-platform.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ChipsModule } from '../shared/modules/chips/chips.module';
 
 
 @NgModule({
@@ -39,11 +40,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     CommonModule,
     ControlsModule,
     ButtonsModule,
-    ScrollableChipsModule,
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
+    ChipsModule
   ],
   bootstrap: [BoardComponent]
 })
