@@ -9,6 +9,8 @@ import { Dictionary } from '../services/components-data.service';
 import { ToggleComponent } from '../../shared/modules/controls/components/toggle/toggle.component';
 import { DesktopPlatformComponent } from '../components/platform/components/desktop-platform/desktop-platform.component';
 import { MobilePlatformComponent } from '../components/platform/components/mobile-platform/mobile-platform.component';
+import { ButtonComponent } from '../../shared/modules/buttons/components/button/button.component';
+import { InputComponent } from '../../shared/modules/controls/components/input/input.component';
 
 export const namespace = 'http://www.w3.org/2000/svg';
 
@@ -76,4 +78,6 @@ export const types: Dictionary<any> = {
   'toggle': ToggleComponent,
   'desktop': DesktopPlatformComponent,
   'mobile': MobilePlatformComponent,
+  'button': ButtonComponent,
+  'input': InputComponent,
 }

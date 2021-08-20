@@ -9,6 +9,7 @@ import { transform } from '../../functions/transform.fuction';
 import { Position } from '../../classes/view-drag.class';
 import { ButtonComponent } from '../../../shared/modules/buttons/components/button/button.component';
 import { ScopeSharerService } from '../../services/scope-sharer.service';
+import { InputComponent } from '../../../shared/modules/controls/components/input/input.component';
 
 @Component({
   selector: 'app-platform',
@@ -108,6 +109,9 @@ export class PlatformComponent {
     const options: ComplexShapeRenderOptions = {
       x: position.x,
       y: position.y,
+
+      type: 'button',
+
       property: {
         width: 120,
         height: 48
@@ -117,6 +121,30 @@ export class PlatformComponent {
     this.complexShapeRendererService
       .complexShapeRenderer
       .appendDynamicComponentToContainer(ButtonComponent, options);
+
+  }
+
+  public handleInputDrop(event: CdkDragDrop<any>) {
+    const { x, y } = event.dropPoint;
+    const deltaX = x - this.pickupPositionInElement.x;
+    const deltaY = y - this.pickupPositionInElement.y;
+    const position = transform({x: deltaX, y: deltaY})(this.complexShapeRendererService.container);
+
+    const options: ComplexShapeRenderOptions = {
+      x: position.x,
+      y: position.y,
+
+      type: 'input',
+
+      property: {
+        width: 280,
+        height: 48
+      }
+    }
+
+    this.complexShapeRendererService
+      .complexShapeRenderer
+      .appendDynamicComponentToContainer(InputComponent, options);
 
   }
 }
