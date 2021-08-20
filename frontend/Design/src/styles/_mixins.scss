@@ -1,0 +1,19 @@
+@mixin layer-3() {
+  z-index: 3;
+}
+
+@mixin layer-2() {
+  z-index: 2;
+}
+
+@mixin layer-1() {
+  z-index: 1;
+}
+
+@mixin flex-container($flex-dir: row, $align-items: flex-start, $justify-content: flex-start, $flex-wrap: nowrap) {
+  display: flex;
+  flex-direction: #{$flex-dir};
+  align-items: #{$align-items};
+  justify-content: #{$justify-content};
+  flex-wrap: #{$flex-wrap};
+}

@@ -1,0 +1,50 @@
+@import "typography";
+@import "sizes";
+
+.mega {
+  @include mega($transparent-1);
+}
+
+.headline-1 {
+  @include headline-1($transparent-1);
+}
+
+.headline-2 {
+  @include headline-2($transparent-1);
+}
+
+.headline-3 {
+  @include headline-3($transparent-1);
+}
+
+.headline-4 {
+  @include headline-4($transparent-1);
+}
+
+.body-l {
+  @include body-l($transparent-1);
+}
+
+.body-m {
+  @include body-m($transparent-1);
+}
+
+.caption {
+  @include caption($transparent-1);
+}
+
+.margin-left {
+  margin-left: $margin-l;
+}
+
+.margin-right {
+  margin-right: $margin-l;
+}
+
+.margin-top {
+  margin-top: $margin-l;
+}
+
+.margin-bottom {
+  margin-bottom: $margin-l;
+}

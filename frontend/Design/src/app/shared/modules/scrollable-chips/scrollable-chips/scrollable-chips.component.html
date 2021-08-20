@@ -1,0 +1,12 @@
+<div class="scrollable-chips" (mousedown)="handleMouseDown($event)" #container>
+
+  <ng-container *ngFor="let chip of chips; index as i">
+    <div class="scrollable-chips__chip">
+      <app-chip [active]="chip === value"
+                (click)="handleChipClick(chip)">
+        {{getTextContent(chip)}}
+      </app-chip>
+    </div>
+  </ng-container>
+
+</div>
