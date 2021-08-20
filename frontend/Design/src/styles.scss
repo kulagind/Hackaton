@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@import "styles/mixins";
+@import "styles/typography";
+@import "styles/colors";
+@import "styles/sizes";
+@import "styles/classes";
+@import "styles/components/button";
+@import "styles/components/switch";
+@import "styles/components/input";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $grayscale-9;
+}
+

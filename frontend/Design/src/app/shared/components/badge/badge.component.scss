@@ -1,0 +1,9 @@
+@import "src/styles";
+
+.badge {
+  border-radius: 100px;
+  background: $grayscale-9;
+  padding: 8px 14px;
+
+  @include caption($grayscale-1)
+}

@@ -1,0 +1,41 @@
+@import "src/styles/colors";
+@import "src/styles/typography";
+
+.input {
+  width: 280px;
+  height: 48px;
+  @include body-m($grayscale-1);
+  outline: none;
+}
+
+.input__content {
+  width: 100%;
+  height: 100%;
+  padding: 0 0 0 12px;
+  border-radius: 7px;
+  background-color: $grayscale-9;
+  border: none;
+}
+
+.input__content:focus {
+  outline: none;
+}
+
+.input__label {
+  display: block;
+  color: rgba(16, 24, 40, 0.7);
+  transform: translateY(-2rem);
+  padding-left: 12px;
+  line-height: 1rem;
+  transition: 150ms ease-in-out;
+}
+
+.input__content:focus + label {
+  font-size: 10px;
+  transform: translateY(-2.9rem);
+}
+
+.input__content:valid + label {
+  font-size: 10px;
+  transform: translateY(-2.9rem);
+}

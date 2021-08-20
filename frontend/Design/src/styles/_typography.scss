@@ -1,0 +1,96 @@
+@font-face {
+  font-family: "Rostelecom Basis";
+  font-weight: 400;
+  src: url("/assets/fonts/RostelecomBasis-Regular.otf");
+}
+
+@font-face {
+  font-family: "Rostelecom Basis";
+  font-weight: 700;
+  src: url("/assets/fonts/RostelecomBasis-Bold.otf");
+}
+
+@mixin font {
+  font-family: Rostelecom Basis;
+  font-style: normal;
+}
+
+@mixin mega($color) {
+  @include font();
+
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 44px;
+
+  color: $color;
+}
+
+@mixin headline-1($color) {
+  @include font();
+
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 32px;
+
+  color: $color;
+}
+
+@mixin headline-2($color) {
+
+  @include font();
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 24px;
+
+  color: $color;
+}
+
+@mixin headline-3($color) {
+  @include font();
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+
+  color: $color;
+}
+
+@mixin headline-4($color) {
+  @include font();
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+
+  color: $color;
+}
+
+@mixin body-l($color) {
+  @include font();
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+
+  color: $color;
+}
+
+@mixin body-m($color) {
+  @include font();
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+
+  color: $color;
+}
+
+@mixin caption($color) {
+  @include font();
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+
+  color: $color;
+}

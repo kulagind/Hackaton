@@ -1,0 +1,29 @@
+@import "src/styles/colors";
+@import "src/styles/sizes";
+
+@mixin button() {
+  height: 48px;
+  width: 120px;
+  border-radius: $radius-m;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
+
+.button {
+  @include button();
+
+  &_outline {
+    background: none;
+    border: 1px solid $primary-2;
+    color: $primary-2;
+  }
+
+  &_solid {
+    background: $primary-2;
+    color: $grayscale-10;
+  }
+}
+
+

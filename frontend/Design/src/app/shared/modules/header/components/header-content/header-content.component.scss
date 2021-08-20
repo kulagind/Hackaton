@@ -1,0 +1,10 @@
+@import "src/styles";
+
+:host {
+  @include flex-container('row', 'center');
+}
+
+.content {
+  margin-left: $margin-xl;
+  color: $primary-1;
+}

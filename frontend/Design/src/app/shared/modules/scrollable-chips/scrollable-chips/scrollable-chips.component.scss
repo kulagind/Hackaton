@@ -1,0 +1,17 @@
+.scrollable-chips {
+  max-width: 100%;
+  overflow-x: scroll;
+  height: 35px;
+  display: flex;
+
+  &__chip {
+    display: inline-block;
+    margin-right: 8px;
+    width: auto;
+    transition: 350ms ease-in-out;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
