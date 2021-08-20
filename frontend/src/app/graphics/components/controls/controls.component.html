@@ -1,17 +1,14 @@
 <div class="platform">
-  <app-graphic-component-container class="platform-card">
+  <app-graphic-component-container class="platform-card" cdkDropList>
     <app-graphic-component-container-name>
-      Мобильная платформа
+      Поле ввода
     </app-graphic-component-container-name>
 
-    <app-graphic-component-container-content class="platform-card-content" cdkDropList>
-      <div
-        #mobile
-        class="platform_mobile"
-        cdkDrag
-        (cdkDragDropped)="handleMobileDrop($event)"
-        (cdkDragStarted)="handleStartedPoint($event, true)">
-      </div>
+    <app-graphic-component-container-content class="platform-card-content">
+      <app-toggle cdkDrag
+                 (cdkDragDropped)="handleSwitchDrop($event)"
+                 (cdkDragStarted)="handleStartedPoint($event)">
+      </app-toggle>
     </app-graphic-component-container-content>
 
     <app-graphic-component-container-description>
@@ -21,21 +18,19 @@
 
   <app-graphic-component-container class="platform-card" cdkDropList>
     <app-graphic-component-container-name>
-      Десктопная платформа
+      Кнопка
     </app-graphic-component-container-name>
 
     <app-graphic-component-container-content class="platform-card-content">
-      <div class="platform_desktop"
-           cdkDrag
-           (cdkDragDropped)="handleDesktopDrop($event)"
-           (cdkDragStarted)="handleStartedPoint($event, true)"></div>
+      <app-button cdkDrag
+                 (cdkDragDropped)="handleButtonDrop($event)"
+                 (cdkDragStarted)="handleStartedPoint($event)">Кнопка
+      </app-button>
     </app-graphic-component-container-content>
 
     <app-graphic-component-container-description>
       Кнопки использвуются для основных взаимодействий с пользователями
     </app-graphic-component-container-description>
   </app-graphic-component-container>
-
-
 
 </div>

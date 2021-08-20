@@ -1,0 +1,20 @@
+<div class="platform">
+  <app-graphic-component-container class="platform-card" cdkDropList>
+    <app-graphic-component-container-name>
+      Поле ввода
+    </app-graphic-component-container-name>
+
+    <app-graphic-component-container-content class="platform-card-content">
+      <app-input cdkDrag
+                 contenteditable="true"
+                 (cdkDragDropped)="handleInputDrop($event)"
+                 (cdkDragStarted)="handleStartedPoint($event)">Кнопка
+      </app-input>
+    </app-graphic-component-container-content>
+
+    <app-graphic-component-container-description>
+      Кнопки использвуются для основных взаимодействий с пользователями
+    </app-graphic-component-container-description>
+  </app-graphic-component-container>
+
+</div>

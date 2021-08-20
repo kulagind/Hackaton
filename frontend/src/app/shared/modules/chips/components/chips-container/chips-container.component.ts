@@ -21,9 +21,7 @@ export class ChipsContainerComponent<T> implements AfterViewInit {
   public readonly mouseUp = fromEvent(document, 'mouseup')
     .pipe(
       tap(() =>
-        setTimeout(() => {
-          this.isMouseMoved = false
-        }, 0)
+        this.isMouseMoved = false
       )
     );
 
@@ -31,8 +29,9 @@ export class ChipsContainerComponent<T> implements AfterViewInit {
   public readonly chips: QueryList<ChipComponent>;
 
   public ngAfterViewInit() {
-    console.log(this.control)
-    this.chips.forEach(chip => chip.control = this.control);
+    this.chips.forEach(chip => {
+      runTask(() => chip.control = this.control);
+    });
   }
 
   public handleMouseDown(event: MouseEvent): void {
@@ -52,4 +51,8 @@ export class ChipsContainerComponent<T> implements AfterViewInit {
       });
   }
 
+}
+
+export function runTask(task: (...args: any[]) => void) {
+  setTimeout(task, 0);
 }

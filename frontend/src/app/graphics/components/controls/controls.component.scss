@@ -1,0 +1,43 @@
+@import "src/styles";
+
+.platform {
+  &-card {
+    display: block;
+    margin-bottom: 85px;
+    &-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 273px;
+    }
+  }
+}
+
+.platform {
+  &_mobile {
+    width: 97px;
+    height: 166px;
+    background: $grayscale-10;
+    border-radius: 5px;
+
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.03);
+
+    @include layer-1();
+  }
+
+  &_desktop {
+    width: 259px;
+    height: 138px;
+    background: $grayscale-10;
+    border-radius: 5px;
+
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.03);
+
+    @include layer-1();
+  }
+}
+
+
+.mobile {
+  transform: scale(0.2);
+}

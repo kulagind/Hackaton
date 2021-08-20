@@ -10,9 +10,10 @@ import { ButtonComponent } from './components/button/button.component';
     ButtonDirective,
     ButtonComponent
   ],
-  exports: [
-    ButtonDirective
-  ],
+    exports: [
+        ButtonDirective,
+        ButtonComponent
+    ],
   imports: [
     CommonModule
   ]
