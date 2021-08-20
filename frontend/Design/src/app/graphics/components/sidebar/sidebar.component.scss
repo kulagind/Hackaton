@@ -1,0 +1,69 @@
+@import "src/styles";
+
+.container {
+  background: $grayscale-10;
+  height: 100%;
+  width: 500px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.03);
+  padding-top: 65px;
+
+  overflow-y: scroll;
+
+  @include flex-container('column', 'center');
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $grayscale-10;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $grayscale-9;
+    border-radius: 10px;
+  }
+
+  &-text {
+    padding: 0 55px;
+    margin-top: 35px;
+    width: 100%;
+    @include flex-container('row', 'center');
+
+    &-title {
+      font-size: 26px;
+      @include headline-2($grayscale-1);
+    }
+  }
+
+  &-content {
+    padding: 0 55px;
+    margin-top: 75px;
+    width: 100%;
+
+    &-card {
+      display: block;
+      margin-bottom: 85px;
+    }
+  }
+}
+
+.chips-container {
+  position: sticky;
+  top: 0;
+  @include flex-container('row', 'center');
+  @include layer-2();
+  width: 100%;
+  margin-top: 25px;
+  padding: 20px 0;
+
+  background: $grayscale-10;
+}
+
+.chips {
+  padding-left: 55px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}

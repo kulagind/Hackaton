@@ -1,0 +1,19 @@
+<div class="container" cdkScrollable>
+
+  <div class="container-text">
+    <p class="container-text-title margin-right">Компоненты</p>
+    <app-badge>64</app-badge>
+  </div>
+
+  <div class="chips-container">
+    <app-scrollable-chips
+      class="chips"
+      [chips]="['Контрол', 'Платформа', 'Слайдер', 'Таблица', 'Таблица', 'Таблица']">
+    </app-scrollable-chips>
+  </div>
+
+  <div class="container-content">
+      <app-platform></app-platform>
+  </div>
+
+</div>

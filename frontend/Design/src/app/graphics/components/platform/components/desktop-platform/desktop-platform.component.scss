@@ -1,0 +1,22 @@
+@import "src/styles";
+
+.desktop {
+  width: 1440px;
+  height: 1024px;
+  background: #fff;
+  border-radius: 10px;
+
+  padding: 0 104px;
+  cursor: pointer;
+
+  @include flex-container();
+
+
+}
+
+.bootstrap {
+  height: 100%;
+  width: 88px;
+  background: rgba(255, 79, 18, 0.1);
+  margin-left: 16px;
+}
