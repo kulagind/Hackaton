@@ -1,5 +1,6 @@
 <div class="chip"
      (click)="toggle()"
+     [class.chip_active]="control?.selected.includes(content)"
      #chip>
   <ng-content></ng-content>
 </div>

@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
+import { runTask } from '../chips-container/chips-container.component';
 
 @Component({
   selector: 'app-chip',
@@ -9,7 +10,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 export class ChipComponent implements AfterViewInit {
 
   @Input()
-  public control: SelectionModel<string>;
+  public control: SelectionModel<string> = new SelectionModel<string>();
   public content: NonNullable<Readonly<string>>;
 
   @ViewChild('chip')
@@ -18,7 +19,6 @@ export class ChipComponent implements AfterViewInit {
   public toggle = () => this.control.toggle(this.content);
 
   public ngAfterViewInit() {
-    this.control.changed.subscribe(v => console.log(v));
     this.content = this.chip.nativeElement.textContent ?? '';
   }
 
