@@ -28,6 +28,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonsComponent } from './components/buttons/buttons.component';
 import { TextComponent } from './components/text/text.component';
+import { ElementListComponent } from './components/element-list/element-list.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { TextComponent } from './components/text/text.component';
     ControlsComponent,
     ButtonsComponent,
     TextComponent,
+    ElementListComponent,
   ],
   imports: [
     CommonModule,

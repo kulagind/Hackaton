@@ -2,6 +2,7 @@ import { BehaviorSubject, interval } from 'rxjs';
 import { finalize, map, takeWhile, tap } from 'rxjs/operators';
 import { Drag } from './view-drag.class';
 import { Zoom } from './view-zoom.class';
+import { GlobalDataService } from '../services/snapshot-observer.service';
 
 export type View = {
   x: number,
@@ -27,6 +28,7 @@ export class Scope {
     this.subscribeToChangeScope();
     this.subscribeToScopeDown();
     this.subscribeToZoom();
+    this.listenScopeChange();
   }
 
   public setDefaultScale(): void {
@@ -39,7 +41,7 @@ export class Scope {
     const view = `${updatedX} ${y} ${updatedZ} ${updatedZ / 100}`;
 
     this.scope$.next(view);
-    
+
     interval(2).pipe(
       map(value => value * 30),
       takeWhile(value => value < Math.abs(updatedZ - z)),
@@ -53,6 +55,16 @@ export class Scope {
         this.view.z = updatedZ;
       })
     ).subscribe();
+  }
+
+  public listenScopeChange() {
+    GlobalDataService.setViewOnElement
+      .subscribe(position => {
+        this.view.x = position.x - 1800;
+        this.view.y = position.y + 500;
+
+        this.updateContainerScope();
+      })
   }
 
   private setViewBox(viewBox: string): void {
@@ -102,7 +114,6 @@ export class Scope {
       .pipe(
         tap(zoom => {
           this.view.z += zoom.z;
-          console.log(zoom.z)
           if (this.view.z <= 0) {
             return;
           }

@@ -11,6 +11,8 @@ import { DesktopPlatformComponent } from '../components/platform/components/desk
 import { MobilePlatformComponent } from '../components/platform/components/mobile-platform/mobile-platform.component';
 import { ButtonComponent } from '../../shared/modules/buttons/components/button/button.component';
 import { InputComponent } from '../../shared/modules/controls/components/input/input.component';
+import { GlobalDataService } from '../services/snapshot-observer.service';
+import { v4 as uuidv4 } from 'uuid'
 
 export const namespace = 'http://www.w3.org/2000/svg';
 
@@ -27,13 +29,15 @@ export class ComplexShapeRenderer {
     const container = this.dynamicComponentFactory.getContentContainer();
     const { component } = compiledComponentWithMetaData;
 
-    const properties = { ...options };
+    const properties = { ...options, id: uuidv4() };
 
     new DynamicComponentContainerDecorator(container, this.container)
       .decorateDynamicComponentContainer(properties)
       .append(component);
 
-    this.container.append(container)
+    this.container.append(container);
+    GlobalDataService.changes$.next();
+
   }
 
 }
@@ -57,7 +61,7 @@ export class DynamicComponentContainerDecorator {
     this.target.setAttribute('width', options.property.width.toString());
     this.target.setAttribute('height', options.property.height.toString());
     this.target.setAttribute('type', options.type);
-
+    this.target.setAttribute('id', options.id);
 
     this.target.classList.add('ui-element-container');
 

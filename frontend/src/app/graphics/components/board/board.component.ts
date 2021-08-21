@@ -10,7 +10,7 @@ import {
 import { Scope } from '../../classes/view-scope.class';
 import { ComplexShapeRendererService } from '../../services/complex-shape-renderer.service';
 import { ComponentsDataService } from '../../services/components-data.service';
-import { SnapshotObserverService } from '../../services/snapshot-observer.service';
+import { GlobalDataService, SnapshotObserverService } from '../../services/snapshot-observer.service';
 import { ScopeSharerService } from '../../services/scope-sharer.service';
 import { types } from '../../classes/complex-shape-renderer.class';
 import { LocalStorageService } from '../../services/local-storage.service';
@@ -26,6 +26,8 @@ import { Project } from '../../../projects/components/projects/projects.componen
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements AfterViewInit, OnDestroy {
+
+  public readonly toolbarIsOpen$ = GlobalDataService.toggleToolbar$;
 
   private scope!: NonNullable<Readonly<Scope>>;
   private project: Project;
@@ -66,11 +68,12 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
 
     this.snapshotObserverService.components$
       .subscribe(components => {
-        this.projectHttp.updateProject({
-          name: this.project.name,
-          uid: this.project.uid,
-          canvas: components,
-        }).subscribe()
+        console.log(components)
+        // this.projectHttp.updateProject({
+        //   name: this.project.name,
+        //   uid: this.project.uid,
+        //   canvas: components,
+        // }).subscribe()
       })
 
   }
