@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ComponentContainer, ComponentsDataService } from './components-data.service';
-import { BehaviorSubject, interval, Subject } from 'rxjs';
+import { ComponentContainer } from './components-data.service';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { LocalStorageService } from './local-storage.service';
-import { Project } from '../../projects/components/projects/projects.component';
 import { Position } from '../classes/view-drag.class';
 
 export class GlobalDataService {
   static changes$ = new BehaviorSubject<void>(null);
   static setViewOnElement = new Subject<Position>();
   static toggleToolbar$ = new BehaviorSubject<boolean>(true);
+  static showComment$ = new BehaviorSubject<boolean>(false);
 }
 
 @Injectable({

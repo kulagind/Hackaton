@@ -19,6 +19,9 @@ import { ProjectHttpService } from '../../../shared/services/project-http.servic
 import { ActivatedRoute } from '@angular/router';
 import { pluck, tap } from 'rxjs/operators';
 import { Project } from '../../../projects/components/projects/projects.component';
+import { CommentComponent } from '../comment/comment.component';
+import { defaultGraphicComponentsPropertiesFactory } from '../../functions/default-graphic-components-properties.factory';
+import { defaultComplexShapeRenderingOptionsFactory } from '../../functions/default-complex-shape-render-options.factory';
 
 @Component({
   selector: 'app-board',
@@ -50,6 +53,7 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('container', { read: ViewContainerRef })
   private readonly target!: ViewContainerRef;
+  public readonly isShow$ = GlobalDataService.showComment$;
 
   public ngAfterViewInit() {
     const viewBox = this.scopeService.getScopeParams();
@@ -84,6 +88,9 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
   private initialComponentsRender() {
 
     const query = this.router.snapshot.paramMap.get('id');
+
+    this.complexShapeRendererService.complexShapeRenderer.appendDynamicComponentToContainer(CommentComponent,
+      { ...defaultComplexShapeRenderingOptionsFactory(), type: 'comment', property: { width: 300, height: 300 } })
 
     this.projectHttp.getProject(query)
       .pipe(

@@ -6,7 +6,7 @@
 
   <div class="container-content container-content_light margin-top margin-bottom">
 
-    <div class="themes">
+    <div class="themes" *ngIf="hasTheme">
 
       <div class="theme themes-dark" (click)="control.select('dark')">
         <mat-icon class="icon" *ngIf="control.selected.includes('dark')">check</mat-icon>

@@ -30,6 +30,8 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
 import { TextsComponent } from './components/text/text.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { ElementListComponent } from './components/element-list/element-list.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { CommentContainerComponent } from './components/comment-container/comment-container.component';
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { ElementListComponent } from './components/element-list/element-list.com
     TextsComponent,
     IconsComponent,
     ElementListComponent,
+    CommentComponent,
+    CommentContainerComponent,
   ],
   imports: [
     CommonModule,

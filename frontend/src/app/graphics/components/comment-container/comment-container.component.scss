@@ -1,0 +1,40 @@
+@import "src/styles";
+
+.comment-container {
+  width: 400px;
+  height: 90px;
+  border-radius: 10px;
+  background: $grayscale-10;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.03);
+
+  display: flex;
+  align-items: center;
+
+  padding: 8px;
+}
+
+.image {
+  width: 74px;
+  height: 74px;
+  background: $primary-1;
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: $grayscale-10;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: 35px;
+  color: $grayscale-4;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+}

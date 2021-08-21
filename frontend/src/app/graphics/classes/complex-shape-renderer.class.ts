@@ -16,7 +16,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { SelectComponent } from 'src/app/shared/modules/controls/components/select/select.component';
 import { IconComponent } from 'src/app/shared/modules/controls/components/icon/icon.component';
 import { HeaderComponent } from 'src/app/shared/modules/controls/components/header/header.component';
-import { TextComponent } from 'src/app/shared/modules/controls/components/text/text.component';
+import { TextComponent } from '../components/text/text.component';
+import { CommentComponent } from '../components/comment/comment.component';
 
 export const namespace = 'http://www.w3.org/2000/svg';
 
@@ -32,7 +33,7 @@ export class ComplexShapeRenderer {
     const compiledComponentWithMetaData = this.dynamicComponentFactory.getComponentFromAngularFactory(type);
     const container = this.dynamicComponentFactory.getContentContainer();
     const { component } = compiledComponentWithMetaData;
-    
+
     if (name) {
       // @ts-ignore
       component.innerHTML = name;
@@ -97,5 +98,6 @@ export const types: Dictionary<any> = {
   'select': SelectComponent,
   'icon': IconComponent,
   'header': HeaderComponent,
-  'text': TextComponent
+  'text': TextComponent,
+  'comment': CommentComponent,
 }

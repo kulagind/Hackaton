@@ -13,6 +13,9 @@ export class GraphicComponentContainerComponent {
   @Input()
   public isDark: boolean = false;
 
+  @Input()
+  public hasTheme: boolean = false;
+
   constructor() {
   }
 }

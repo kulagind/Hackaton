@@ -1,0 +1,11 @@
+<div class="comment-container" @global>
+
+  <div class="image" *ngIf="trigger$ | async" @image>
+    <mat-icon>chat_bubble</mat-icon>
+  </div>
+
+  <div class="message" *ngIf="trigger$ | async" @text>
+    <div class="body-l text">Сделай отступ больше и шрифт меньше!</div>
+  </div>
+
+</div>
