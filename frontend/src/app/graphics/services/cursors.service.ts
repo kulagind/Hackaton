@@ -23,7 +23,7 @@ export class CursorsService {
   private subSend: SubscriptionLike;
   private _cursors: Map<string, ReplaySubject<Cursor>> = new Map();
   private cursorOwners: ReplaySubject<string[]> = new ReplaySubject(1);
-  private _cursorOwners: string[] = [];  
+  private _cursorOwners: string[] = [];
 
   public isCoop: boolean = true;
 
@@ -64,7 +64,7 @@ export class CursorsService {
       })
     ).subscribe(event => {
       this.ws.send(EVENT.cursor, {x: event.x, y: event.y, name: this.authService.name});
-      this.ws.send(EVENT.cursor, {x: event.x + 100, y: event.y + 100, name: 'Billy'});
+      // this.ws.send(EVENT.cursor, {x: event.x + 100, y: event.y + 100, name: 'Billy'});
     });
   }
 
