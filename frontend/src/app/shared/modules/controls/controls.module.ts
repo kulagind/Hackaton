@@ -5,6 +5,9 @@ import { SliderComponent } from './components/slider/slider.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { ChipsComponent } from './components/chips/chips.component';
 import { InputComponent } from './components/input/input.component';
+import { SelectComponent } from './components/select/select.component';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -14,14 +17,18 @@ import { InputComponent } from './components/input/input.component';
         SliderComponent,
         CheckboxComponent,
         ChipsComponent,
-        InputComponent
+        InputComponent,
+        SelectComponent,
     ],
     exports: [
         ToggleComponent,
-        InputComponent
+        InputComponent,
+        SelectComponent,
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        FormsModule,
+        MatIconModule
     ]
 })
 export class ControlsModule { }

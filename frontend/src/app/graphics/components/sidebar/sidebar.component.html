@@ -8,15 +8,19 @@
   <div class="chips-container">
     <app-chips-container class="chips" [control]="control">
       <app-chip class="chips-chip">Платформа</app-chip>
+      <app-chip class="chips-chip">Текст</app-chip>
       <app-chip class="chips-chip">Контролы</app-chip>
-      <app-chip class="chips-chip">Поле ввода</app-chip>
+      <app-chip class="chips-chip">Кнопки</app-chip>
+      <app-chip class="chips-chip">Поля ввода</app-chip>
     </app-chips-container>
   </div>
 
   <div class="container-content">
     <app-platform *ngIf="control.selected.includes('Платформа')"></app-platform>
-    <app-form-fields *ngIf="control.selected.includes('Поле ввода')"></app-form-fields>
+    <app-form-fields *ngIf="control.selected.includes('Поля ввода')"></app-form-fields>
     <app-controls *ngIf="control.selected.includes('Контролы')"></app-controls>
+    <app-text *ngIf="control.selected.includes('Текст')"></app-text>
+    <app-buttons *ngIf="control.selected.includes('Кнопки')"></app-buttons>
   </div>
 
 </div>

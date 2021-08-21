@@ -1,0 +1,11 @@
+<div class="select">
+  <input [(ngModel)]="choosen" class="select__content" name="select" id="select" required (click)="openList()">
+  <div *ngIf="isList" class="select__list">
+    <div class="select__var" (click)="setChoosen('Вариант 1')">Вариант 1</div>
+    <div class="select__var" (click)="setChoosen('Вариант 2')">Вариант 2</div>
+    <div class="select__var" (click)="setChoosen('Вариант 3')">Вариант 3</div>
+  </div>
+  <label class="select__label" for="select">Выбор</label>
+
+  <mat-icon class="select__icon" [ngStyle]="{'transform': isList ? 'translateX(-50%) translateY(-50%) rotate(180deg)' : 'translateX(-50%) translateY(-50%) rotate(0deg)'}">expand_more</mat-icon>
+</div>

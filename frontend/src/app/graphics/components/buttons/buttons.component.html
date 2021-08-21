@@ -1,14 +1,14 @@
 <div class="platform">
   <app-graphic-component-container class="platform-card" cdkDropList>
     <app-graphic-component-container-name>
-      Переключатель
+      Кнопка
     </app-graphic-component-container-name>
 
     <app-graphic-component-container-content class="platform-card-content">
-      <app-toggle cdkDrag
-                 (cdkDragDropped)="handleSwitchDrop($event)"
-                 (cdkDragStarted)="handleStartedPoint($event)">
-      </app-toggle>
+      <app-button cdkDrag
+                 (cdkDragDropped)="handleButtonDrop($event)"
+                 (cdkDragStarted)="handleStartedPoint($event)">Кнопка
+      </app-button>
     </app-graphic-component-container-content>
 
     <app-graphic-component-container-description>

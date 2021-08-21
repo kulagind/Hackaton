@@ -26,6 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRippleModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonsComponent } from './components/buttons/buttons.component';
+import { TextComponent } from './components/text/text.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     ToolbarComponent,
     FormFieldsComponent,
     ControlsComponent,
+    ButtonsComponent,
+    TextComponent,
   ],
   imports: [
     CommonModule,
