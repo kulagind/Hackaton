@@ -9,6 +9,8 @@ import { SelectComponent } from './components/select/select.component';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { IconComponent } from './components/icon/icon.component';
+import { HeaderComponent } from './components/header/header.component';
+import { TextComponent } from './components/text/text.component';
 
 
 
@@ -21,6 +23,8 @@ import { IconComponent } from './components/icon/icon.component';
         InputComponent,
         SelectComponent,
         IconComponent,
+        HeaderComponent,
+        TextComponent,
     ],
     exports: [
         ToggleComponent,

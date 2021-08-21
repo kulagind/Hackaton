@@ -9,7 +9,7 @@ import { AuthService } from '../../shared/services/auth.service';
 import { ComplexShapeRendererService } from './complex-shape-renderer.service';
 
 export interface Cursor {
-  name: string,
+  id: string,
   x: number,
   y: number
 }
@@ -17,7 +17,7 @@ export interface Cursor {
 @Injectable({
   providedIn: 'root'
 })
-export class CursorsService {
+export class ShapeSocketService {
 
   private subOn: SubscriptionLike;
   private subSend: SubscriptionLike;
