@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CursorsService } from '../../services/cursors.service';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { Position } from '../../classes/view-drag.class';
+import { GlobalDataService } from '../../services/snapshot-observer.service';
 
 export const globalOptions = {
   bootstrap: true,
@@ -13,6 +16,7 @@ export const globalOptions = {
 export class ToolbarComponent implements OnInit {
 
   public readonly globalOptions = globalOptions;
+  public readonly toolbarIsOpen$ = GlobalDataService.toggleToolbar$;
 
   constructor(public cursorsService: CursorsService,) { }
 
@@ -23,4 +27,7 @@ export class ToolbarComponent implements OnInit {
     globalOptions.bootstrap = !globalOptions.bootstrap;
   }
 
+  public toggleToolbar() {
+    GlobalDataService.toggleToolbar$.next(!GlobalDataService.toggleToolbar$.value)
+  }
 }

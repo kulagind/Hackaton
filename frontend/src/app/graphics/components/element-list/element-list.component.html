@@ -1,0 +1,20 @@
+<div class="element-list">
+
+  <h3 class="headline-3 element-list-title">Элементы</h3>
+
+  <ng-container *ngFor="let element of elements$ | async">
+    <div class="element-list-card" (click)="setViewOnComponent(element)" matRipple matRippleColor="rgba(119, 0, 255, 0.1)">
+      <div class="preview">
+        <mat-icon class="icon">photo</mat-icon>
+      </div>
+
+      <div class="text">
+        {{ element.options.type }}
+
+        <button class="delete" (click)="delete(element)" mat-icon-button>
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</div>

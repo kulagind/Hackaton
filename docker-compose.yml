@@ -11,7 +11,7 @@ services:
       expose:
         - 8999
       ports:
-        - 8999:8999
+        - "8999:8999"
       volumes:
 #        - ./static:/srv/www/rostelecom/static
         - ./websocket:/srv/www/rostelecom/websocket
@@ -45,6 +45,20 @@ services:
 # и nginx зависит от контейнера python. Т.е. python должен быть запущен первым
         depends_on:
             - python
+
+    postgres:
+# Ниже даже расписывать не хочу, насколько все просто: логин, пароль, БД, порты и т.д.
+        image: postgres:13-alpine
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: rostelecom_design
+            PGDATA: /var/lib/postgresql/data
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+
     python:
         restart: always
 # указываем откуда собирать образ
@@ -57,18 +71,16 @@ services:
         expose:
           - 8000
         ports:
-            - 8000:8000
+            - "8000:8000"
 # запускаем gunicorn
-        command: "gunicorn -c gunicorn.py backend.wsgi"
-    postgres:
-# Ниже даже расписывать не хочу, насколько все просто: логин, пароль, БД, порты и т.д.
-        image: postgres:13-alpine
-        ports:
-            - 5432:5432
-        environment:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: postgres
-            POSTGRES_DB: rostelecom_design
-            PGDATA: /var/lib/postgresql/data
-        volumes:
-            - pgdata:/var/lib/postgresql/data
+        #python manage.py migrate &&
+        command: bash -c "python manage.py migrate && gunicorn -c gunicorn.py backend.wsgi"
+        depends_on:
+          - postgres
+#networks:
+#  default:
+#    driver: bridge
+#    ipam:
+#      driver: default
+#      config:
+#      - subnet:  172.17.0.1/16

@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
-import { ComponentContainer } from './components-data.service';
-import { interval, Subject } from 'rxjs';
+import { ComponentContainer, ComponentsDataService } from './components-data.service';
+import { BehaviorSubject, interval, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { LocalStorageService } from './local-storage.service';
 import { Project } from '../../projects/components/projects/projects.component';
+import { Position } from '../classes/view-drag.class';
+
+export class GlobalDataService {
+  static changes$ = new BehaviorSubject<void>(null);
+  static setViewOnElement = new Subject<Position>();
+  static toggleToolbar$ = new BehaviorSubject<boolean>(true);
+}
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +22,7 @@ export class SnapshotObserverService {
 
   public readonly components$ = new Subject<ComponentContainer[]>();
 
-  constructor(private readonly local: LocalStorageService) {
+  constructor(private readonly local: LocalStorageService, private readonly componentsDataService: ComponentsDataService) {
   }
 
   public build(container: SVGSVGElement) {
@@ -23,7 +30,7 @@ export class SnapshotObserverService {
   }
 
   public processInfinityObserve() {
-    interval(1000)
+    GlobalDataService.changes$
       .pipe(
         tap(_ => this.snapshot())
       )
@@ -45,6 +52,7 @@ export class SnapshotObserverService {
           x: +value.getAttribute('x'),
           y: +value.getAttribute('y'),
           type: value.getAttribute('type'),
+          id: value.getAttribute('id'),
 
           property: {
             width: +value.getAttribute('width'),

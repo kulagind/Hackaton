@@ -29,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ButtonsComponent } from './components/buttons/buttons.component';
 import { TextComponent } from './components/text/text.component';
 import { IconsComponent } from './components/icons/icons.component';
+import { ElementListComponent } from './components/element-list/element-list.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { IconsComponent } from './components/icons/icons.component';
     ButtonsComponent,
     TextComponent,
     IconsComponent,
+    ElementListComponent,
   ],
   imports: [
     CommonModule,

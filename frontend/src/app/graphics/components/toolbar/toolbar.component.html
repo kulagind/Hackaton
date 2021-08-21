@@ -17,4 +17,10 @@
       chat_bubble
     </mat-icon>
   </button>
+
+  <button mat-icon-button class="margin-bottom icon-button" (click)="toggleToolbar()" >
+    <mat-icon class="icon" [ngClass]="{'active': toolbarIsOpen$ | async}" >
+      reorder
+    </mat-icon>
+  </button>
 </div>
