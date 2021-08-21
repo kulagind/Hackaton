@@ -12,10 +12,6 @@ import { shareReplay } from 'rxjs/operators';
 export class ElementListComponent implements OnInit {
 
   public elements$: Observable<ComponentContainer[]> = this.observerService.components$
-    .asObservable()
-    .pipe(
-      shareReplay(1),
-    );
 
   constructor(private readonly observerService: SnapshotObserverService) {
   }

@@ -5,9 +5,17 @@
     height: 100%;
     width: 100%;
     border-radius: 4px;
+    position: relative;
 
     @include flex-container('row', 'center', 'center');
-    background: $grayscale-1;
+
+    &_dark {
+      background: $grayscale-8;
+    }
+
+    &_light {
+      background: $grayscale-1;
+    }
   }
 
   &-name {
@@ -17,4 +25,43 @@
   &-description {
     margin-top: 25px;
   }
+}
+
+.themes {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  display: flex;
+
+  &-dark {
+    background: $primary-1;
+    border-radius: 50%;
+    height: 18px;
+    width: 18px;
+    margin-right: 8px;
+  }
+
+  &-light {
+    background: $primary-2;
+    border-radius: 50%;
+    height: 18px;
+    width: 18px;
+    margin-right: 8px;
+  }
+}
+
+.theme {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.icon {
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
 }
