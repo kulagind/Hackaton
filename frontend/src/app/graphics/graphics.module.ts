@@ -27,7 +27,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRippleModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonsComponent } from './components/buttons/buttons.component';
-import { TextComponent } from './components/text/text.component';
+import { TextsComponent } from './components/text/text.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { ElementListComponent } from './components/element-list/element-list.component';
 
@@ -49,7 +49,7 @@ import { ElementListComponent } from './components/element-list/element-list.com
     FormFieldsComponent,
     ControlsComponent,
     ButtonsComponent,
-    TextComponent,
+    TextsComponent,
     IconsComponent,
     ElementListComponent,
   ],
