@@ -21,6 +21,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ChipsModule } from '../shared/modules/chips/chips.module';
 import { FormFieldsComponent } from './components/form-fields/form-fields.component';
 import { ControlsComponent } from './components/controls/controls.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -48,7 +51,10 @@ import { ControlsComponent } from './components/controls/controls.component';
     ReactiveFormsModule,
     FormsModule,
     DragDropModule,
-    ChipsModule
+    ChipsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   bootstrap: [BoardComponent]
 })

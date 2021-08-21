@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { HeaderContentComponent } from './components/header-content/header-content.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -15,9 +16,10 @@ import { MatIconModule } from '@angular/material/icon';
     HeaderComponent,
     HeaderContentComponent
   ],
-  imports: [
-    CommonModule,
-    MatIconModule
-  ]
+    imports: [
+        CommonModule,
+        MatIconModule,
+        MatButtonModule
+    ]
 })
 export class HeaderModule { }

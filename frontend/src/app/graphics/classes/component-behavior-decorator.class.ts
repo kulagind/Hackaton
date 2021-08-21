@@ -3,6 +3,7 @@ import { filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { fromEvent } from 'rxjs';
 import { keys, Position } from './view-drag.class';
 import { transform } from '../functions/transform.fuction';
+import { globalOptions } from '../components/toolbar/toolbar.component';
 
 export class ComponentBehaviorDecorator {
   constructor(private readonly target: Container, private readonly overlay: SVGSVGElement, private readonly source?: HTMLElement) {
@@ -48,7 +49,7 @@ export class ComponentDragSource {
             const type = this.target.getAttribute('type');
             const isPlatform = type === 'mobile' || type === 'desktop';
 
-            return transform(isPlatform ? transferred : positionWithBootstrap)(this.global);
+            return transform(isPlatform || !globalOptions.bootstrap ? transferred : positionWithBootstrap)(this.global);
           }),
           takeUntil(fromEvent(window, 'mouseup'))
         )
