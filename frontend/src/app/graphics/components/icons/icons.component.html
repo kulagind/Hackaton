@@ -1,0 +1,18 @@
+<div class="platform">
+  <div *ngFor="let icon of ICONS" class="platform-card" cdkDropList>
+    <div>
+      {{icon}}
+    </div>
+    
+    <div class="card-content">
+      <mat-icon class="icon"
+                contenteditable="true"
+                cdkDrag
+                (cdkDragDropped)="handleIconDrop($event, icon)"
+                (cdkDragStarted)="handleStartedPoint($event)">
+        {{icon}}
+      </mat-icon>
+    </div>
+  </div>
+</div>
+

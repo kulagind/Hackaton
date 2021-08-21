@@ -1,0 +1,55 @@
+@import "src/styles";
+
+.card-content {
+  cursor: pointer;
+  background-color: $grayscale-1 !important;
+  padding: 5px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.platform {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  
+  &-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+}
+
+.platform {
+  &_mobile {
+    width: 97px;
+    height: 166px;
+    background: $grayscale-10;
+    border-radius: 5px;
+
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.03);
+
+    @include layer-1();
+  }
+
+  &_desktop {
+    width: 259px;
+    height: 138px;
+    background: $grayscale-10;
+    border-radius: 5px;
+
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.03);
+
+    @include layer-1();
+  }
+}
+
+
+.mobile {
+  transform: scale(0.2);
+}

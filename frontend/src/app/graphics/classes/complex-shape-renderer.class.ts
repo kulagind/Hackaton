@@ -21,11 +21,17 @@ export class ComplexShapeRenderer {
   }
 
   public appendDynamicComponentToContainer<T = any>
-  (type: Type<Readonly<any>>, options?: ComplexShapeRenderOptions) {
+  (type: Type<Readonly<any>>, options?: ComplexShapeRenderOptions, name?: string) {
 
     const compiledComponentWithMetaData = this.dynamicComponentFactory.getComponentFromAngularFactory(type);
     const container = this.dynamicComponentFactory.getContentContainer();
     const { component } = compiledComponentWithMetaData;
+
+    if (name) {
+      // @ts-ignore
+      component.innerHTML = name;
+      component.style.color = '#B5B7C0';
+    }
 
     const properties = { ...options };
 

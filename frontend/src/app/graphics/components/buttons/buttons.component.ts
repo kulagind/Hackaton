@@ -28,27 +28,6 @@ export class ButtonsComponent {
   ) {
   }
 
-  public handleSwitchDrop(event: CdkDragDrop<any>) {
-    const { x, y } = event.dropPoint;
-    const deltaX = x - this.pickupPositionInElement.x;
-    const deltaY = y - this.pickupPositionInElement.y;
-    const position = transform({x: deltaX, y: deltaY})(this.complexShapeRendererService.container);
-
-    const options: ComplexShapeRenderOptions = {
-      x: position.x,
-      y: position.y,
-      type: 'toggle',
-      property: {
-        width: 60,
-        height: 60
-      }
-    }
-
-    this.complexShapeRendererService
-      .complexShapeRenderer
-      .appendDynamicComponentToContainer(ToggleComponent, options);
-  }
-
   public handleButtonDrop(event: CdkDragDrop<any>) {
     const { x, y } = event.dropPoint;
     const deltaX = x - this.pickupPositionInElement.x;

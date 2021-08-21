@@ -6,7 +6,7 @@
 
     <app-graphic-component-container-content class="platform-card-content">
       <h1 cdkDrag
-          (cdkDragDropped)="handleButtonDrop($event)"
+          (cdkDragDropped)="handleHeaderDrop($event)"
           (cdkDragStarted)="handleStartedPoint($event)">Заголовок
       </h1>
     </app-graphic-component-container-content>
@@ -23,7 +23,7 @@
 
     <app-graphic-component-container-content class="platform-card-content">
       <p cdkDrag
-          (cdkDragDropped)="handleButtonDrop($event)"
+          (cdkDragDropped)="handleTextDrop($event)"
           (cdkDragStarted)="handleStartedPoint($event)">Фрагмент текста
       </p>
     </app-graphic-component-container-content>

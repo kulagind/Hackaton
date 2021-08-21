@@ -27,7 +27,7 @@ export class TextComponent {
   ) {
   }
 
-  public handleSwitchDrop(event: CdkDragDrop<any>) {
+  public handleHeaderDrop(event: CdkDragDrop<any>) {
     const { x, y } = event.dropPoint;
     const deltaX = x - this.pickupPositionInElement.x;
     const deltaY = y - this.pickupPositionInElement.y;
@@ -36,7 +36,7 @@ export class TextComponent {
     const options: ComplexShapeRenderOptions = {
       x: position.x,
       y: position.y,
-      type: 'toggle',
+      type: 'header',
       property: {
         width: 60,
         height: 60
@@ -48,7 +48,7 @@ export class TextComponent {
       .appendDynamicComponentToContainer(ToggleComponent, options);
   }
 
-  public handleButtonDrop(event: CdkDragDrop<any>) {
+  public handleTextDrop(event: CdkDragDrop<any>) {
     const { x, y } = event.dropPoint;
     const deltaX = x - this.pickupPositionInElement.x;
     const deltaY = y - this.pickupPositionInElement.y;
@@ -58,7 +58,7 @@ export class TextComponent {
       x: position.x,
       y: position.y,
 
-      type: 'button',
+      type: 'text',
 
       property: {
         width: 120,

@@ -9,6 +9,7 @@
     <app-chips-container class="chips" [control]="control">
       <app-chip class="chips-chip">Платформа</app-chip>
       <app-chip class="chips-chip">Текст</app-chip>
+      <app-chip class="chips-chip">Иконки</app-chip>
       <app-chip class="chips-chip">Контролы</app-chip>
       <app-chip class="chips-chip">Кнопки</app-chip>
       <app-chip class="chips-chip">Поля ввода</app-chip>
@@ -18,6 +19,7 @@
   <div class="container-content">
     <app-platform *ngIf="control.selected.includes('Платформа')"></app-platform>
     <app-form-fields *ngIf="control.selected.includes('Поля ввода')"></app-form-fields>
+    <app-icons *ngIf="control.selected.includes('Иконки')"></app-icons>
     <app-controls *ngIf="control.selected.includes('Контролы')"></app-controls>
     <app-text *ngIf="control.selected.includes('Текст')"></app-text>
     <app-buttons *ngIf="control.selected.includes('Кнопки')"></app-buttons>

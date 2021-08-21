@@ -11,10 +11,11 @@ import { CursorsService } from './graphics/services/cursors.service';
 import { environment } from 'src/environments/environment';
 import {MatIconModule} from '@angular/material/icon';
 import { ProjectsModule } from './projects/projects.module';
+import { IconComponent } from './shared/modules/controls/components/icon/icon.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     ProjectsModule,

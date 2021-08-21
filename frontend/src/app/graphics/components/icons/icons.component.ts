@@ -5,19 +5,26 @@ import { ScopeSharerService } from '../../services/scope-sharer.service';
 import { CdkDragDrop, CdkDragStart } from '@angular/cdk/drag-drop';
 import { transform } from '../../functions/transform.fuction';
 import { ComplexShapeRenderOptions } from '../../types/complex-shape-rendere-options.type';
-import { InputComponent } from '../../../shared/modules/controls/components/input/input.component';
+import { MobilePlatformComponent } from '../platform/components/mobile-platform/mobile-platform.component';
+import { DesktopPlatformComponent } from '../platform/components/desktop-platform/desktop-platform.component';
 import { ToggleComponent } from '../../../shared/modules/controls/components/toggle/toggle.component';
 import { ButtonComponent } from '../../../shared/modules/buttons/components/button/button.component';
-import { bootstrap } from '../../classes/component-behavior-decorator.class';
+import { InputComponent } from '../../../shared/modules/controls/components/input/input.component';
+import { SelectComponent } from 'src/app/shared/modules/controls/components/select/select.component';
+import { IconComponent } from 'src/app/shared/modules/controls/components/icon/icon.component';
+import { ICONS } from './icons';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-controls',
-  templateUrl: './controls.component.html',
-  styleUrls: ['./controls.component.scss']
+  selector: 'app-icons',
+  templateUrl: './icons.component.html',
+  styleUrls: ['./icons.component.scss']
 })
-export class ControlsComponent {
+export class IconsComponent {
 
   private pickupPositionInElement: Position;
+
+  public ICONS: string[] = ICONS;
 
   @ViewChild('mobile')
   private readonly mobile: ElementRef<HTMLElement>;
@@ -28,7 +35,7 @@ export class ControlsComponent {
   ) {
   }
 
-  public handleSwitchDrop(event: CdkDragDrop<any>) {
+  public handleIconDrop(event: CdkDragDrop<any>, name: string) {
     const { x, y } = event.dropPoint;
     const deltaX = x - this.pickupPositionInElement.x;
     const deltaY = y - this.pickupPositionInElement.y;
@@ -37,16 +44,18 @@ export class ControlsComponent {
     const options: ComplexShapeRenderOptions = {
       x: position.x,
       y: position.y,
-      type: 'toggle',
+
+      type: 'icon',
+
       property: {
-        width: 60,
-        height: 60
+        width: 280,
+        height: 48
       }
     }
 
     this.complexShapeRendererService
       .complexShapeRenderer
-      .appendDynamicComponentToContainer(ToggleComponent, options);
+      .appendDynamicComponentToContainer(MatIcon, options, name);
   }
 
   public handleStartedPoint(event: CdkDragStart<any>, isBackground = false): void {
@@ -56,5 +65,4 @@ export class ControlsComponent {
       this.scopeService.scope.setDefaultScale();
     }
   }
-
 }

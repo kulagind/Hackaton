@@ -63,7 +63,7 @@ export class FormFieldsComponent {
       x: position.x,
       y: position.y,
 
-      type: 'input',
+      type: 'select',
 
       property: {
         width: 280,

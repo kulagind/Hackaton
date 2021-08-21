@@ -8,6 +8,7 @@ import { InputComponent } from './components/input/input.component';
 import { SelectComponent } from './components/select/select.component';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { IconComponent } from './components/icon/icon.component';
 
 
 
@@ -19,11 +20,13 @@ import { MatIconModule } from '@angular/material/icon';
         ChipsComponent,
         InputComponent,
         SelectComponent,
+        IconComponent,
     ],
     exports: [
         ToggleComponent,
         InputComponent,
         SelectComponent,
+        IconComponent,
     ],
     imports: [
         CommonModule,

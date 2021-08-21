@@ -18,6 +18,7 @@ export class DynamicComponentsFactory {
 
   public getComponentFromAngularFactory<T extends GraphicComponent>(target: Type<Readonly<T>>): CompiledComponentWithMetaData {
     const component: ComponentRef<T> = this.compileDynamicComponent<T>(target);
+
     return {
       component: this.extractHTMLFromAngularComponentsFactory(component),
       properties: component.instance.graphicElementProperties ?? defaultGraphicComponentsPropertiesFactory(),
