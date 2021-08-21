@@ -75,10 +75,7 @@ export class ComponentDragSource {
     );
 
     public readonly enter$ = fromEvent<MouseEvent>(this.target, 'mouseenter').pipe(
-      // filter(enter => SnapshotObserverService.componentList.find(item => item.options.id === enter.getAttribute('id'))),
-      tap(enter => {
-        console.log(enter);
-        
+      tap(enter => {        
         const position = positionFactory(enter.clientX, enter.clientY);
         const {right, bottom} = this.target.getBoundingClientRect();
         const deltaX = right - position.x;
