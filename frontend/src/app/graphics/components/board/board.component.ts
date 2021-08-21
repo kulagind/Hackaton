@@ -76,8 +76,8 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
 
     this.appendCommentAfterClick();
 
-    new BootstrapDecorator(this.container.nativeElement)
-      .decorateContainer()
+    // new BootstrapDecorator(this.container.nativeElement)
+    //   .decorateContainer()
 
 
     this.snapshotObserverService.components$
@@ -95,7 +95,6 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
       .listenShapeChanges()
       .subscribe((shape: any) => {
         const component = document.getElementById(shape.id);
-        console.log('ss')
         component.setAttribute('x', shape.x);
         component.setAttribute('y', shape.y);
       })
