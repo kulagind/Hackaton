@@ -15,6 +15,12 @@ export interface Cursor {
   x: number,
   y: number
 }
+export interface Shape {
+  name: string,
+  x: number,
+  y: number,
+  id: string
+}
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +64,7 @@ export class CursorsService {
 
     this.subSend = fromEvent<MouseEvent>(this.document, 'mousemove').pipe(
       filter(_ => this.ws.connected),
-      throttleTime(33),
+      throttleTime(100),
       map(event => {
         mousePoint.x = event.clientX;
         mousePoint.y = event.clientY;
@@ -104,17 +110,21 @@ export class CursorsService {
   }
 
   public listenShapeChanges() {
-    return this.ws.on(EVENT.shape).pipe();
+    return this.ws.on<Shape>(EVENT.shape).pipe(
+      filter(cursor => cursor.name !== this.authService.name)
+    );
   }
 
   public sendShapes() {
     GlobalDataService.moveElementAndSend$
+      .pipe(
+        throttleTime(100)
+      )
       .subscribe((data) => {
-        const value = { ...data, name: this._cursorOwners }
+        const value = { ...data, name: this.authService.name }
         if (data) {
           this.ws.send(EVENT.shape, data);
         }
-
       })
   }
 }

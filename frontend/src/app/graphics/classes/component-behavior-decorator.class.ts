@@ -1,5 +1,5 @@
 import { Container } from '../types/container.type';
-import { filter, map, switchMap, takeUntil, tap, throttleTime } from 'rxjs/operators';
+import { filter, map, mergeMap, switchMap, takeUntil, tap, throttleTime } from 'rxjs/operators';
 import { fromEvent } from 'rxjs';
 import { keys, Position } from './view-drag.class';
 import { transform } from '../functions/transform.fuction';
@@ -23,8 +23,14 @@ export class ComponentBehaviorDecorator {
 
     dragable.enter$
       .pipe(
-        tap(position => {
-          
+        mergeMap(_ => {
+          return dragable.move$
+        }),
+        mergeMap(_ => {
+          return dragable.leave$
+        }),
+        tap(_ => {
+          document.body.style.cursor = 'auto';
         })
       )
       .subscribe();
@@ -38,6 +44,7 @@ export class ComponentDragSource {
   public readonly type = this.target.getAttribute('type');
 
   public readonly move$ = fromEvent<MouseEvent>(window, 'mousemove');
+  public readonly leave$ = fromEvent<MouseEvent>(window, 'mouseleave');
   public readonly drag$ = fromEvent<MouseEvent>(this.target, 'mousedown')
     .pipe(
       filter(down => !keys.includes(down.which)),
@@ -68,7 +75,6 @@ export class ComponentDragSource {
               id: this.target.getAttribute('id')
             })
           }),
-          throttleTime(100),
           takeUntil(fromEvent(window, 'mouseup').pipe(tap(() => GlobalDataService.changes$.next())))
         )
       })
