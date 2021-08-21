@@ -8,6 +8,8 @@
 /bazel-out
 /__pycache__
 *.pyc
+/.idea
+.idea
 
 
 # dependencies

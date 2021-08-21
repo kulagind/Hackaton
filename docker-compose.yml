@@ -13,8 +13,17 @@ services:
       ports:
         - 8999:8999
       volumes:
+#        - ./static:/srv/www/rostelecom/static
         - ./websocket:/srv/www/rostelecom/websocket
-      command: node /srv/www/rostelecom/websocket/index.js
+      command:
+        bash -c "cd /srv/www/rostelecom/websocket
+        && npm install
+        && node /srv/www/rostelecom/websocket/index.js"
+#        bash -c "cd ./frontend
+#        && npm install
+#        && npm build
+#        && cp -r ./dist/Design/* *service-volume
+
 
     nginx:
 # при падении будет стараться подняться
@@ -26,7 +35,7 @@ services:
           - 8080
 # мапаем порт 80 на его 8080. Тогда сайт будет доступен по адресу localhost. Убедись, что порт у тебя не занят.
         ports:
-          - "80:8080"
+          - 80:8080
 # монтируем только те директории, в которых лежит статика, т.к. nginx с динамикой не будет работать. Также директорию с логами и файл настройки, который мы подготовили.
         volumes:
             - ./static:/srv/www/rostelecom/static
