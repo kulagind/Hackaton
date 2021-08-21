@@ -18,6 +18,7 @@ export class SnapshotObserverService {
 
   private container: SVGSVGElement;
   public components: ComponentContainer[];
+  static componentList: ComponentContainer[];
 
   public readonly components$ = new Subject<ComponentContainer[]>();
 
@@ -26,6 +27,7 @@ export class SnapshotObserverService {
 
   public build(container: SVGSVGElement) {
     this.container = container;
+    SnapshotObserverService.componentList = this.components;
   }
 
   public processInfinityObserve() {
@@ -64,5 +66,6 @@ export class SnapshotObserverService {
     });
 
     this.components = components;
+    SnapshotObserverService.componentList = this.components;
   }
 }

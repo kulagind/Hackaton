@@ -4,21 +4,30 @@ import { fromEvent } from 'rxjs';
 import { keys, Position } from './view-drag.class';
 import { transform } from '../functions/transform.fuction';
 import { globalOptions } from '../components/toolbar/toolbar.component';
-import { GlobalDataService } from '../services/snapshot-observer.service';
+import { GlobalDataService, SnapshotObserverService } from '../services/snapshot-observer.service';
 
 export class ComponentBehaviorDecorator {
   constructor(private readonly target: Container, private readonly overlay: SVGSVGElement, private readonly source?: HTMLElement) {
   }
 
   public decorateComponentContainer(): Readonly<Container> {
-    new ComponentDragSource(this.target, this.overlay).drag$
+    const dragable = new ComponentDragSource(this.target, this.overlay)
+    dragable.drag$
       .pipe(
         tap(position => {
           this.target.setAttribute('x', (position.x).toString());
           this.target.setAttribute('y', (position.y).toString());
         })
       )
-      .subscribe()
+      .subscribe();
+
+    dragable.enter$
+      .pipe(
+        tap(position => {
+          
+        })
+      )
+      .subscribe();
 
     return this.target;
   }
@@ -54,6 +63,23 @@ export class ComponentDragSource {
           }),
           takeUntil(fromEvent(window, 'mouseup').pipe(tap(() => GlobalDataService.changes$.next())))
         )
+      })
+    );
+
+    public readonly enter$ = fromEvent<MouseEvent>(this.target, 'mouseenter').pipe(
+      // filter(enter => SnapshotObserverService.componentList.find(item => item.options.id === enter.getAttribute('id'))),
+      tap(enter => {
+        console.log(enter);
+        
+        const position = positionFactory(enter.clientX, enter.clientY);
+        const {right, bottom} = this.target.getBoundingClientRect();
+        const deltaX = right - position.x;
+        const deltaY = bottom - position.y;
+        if (deltaX <= 20 && deltaY <=20) {
+          document.body.style.cursor = "se-resize"
+        } else {
+          document.body.style.cursor = "auto"
+        }
       })
     );
 

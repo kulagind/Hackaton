@@ -44,6 +44,7 @@ $Design-theme: mat.define-light-theme((
 @import "styles/components/select";
 @import "styles/components/icon";
 @import "styles/components/text";
+@import "styles/components/resizer";
 
 * {
   box-sizing: border-box;
