@@ -68,12 +68,11 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
 
     this.snapshotObserverService.components$
       .subscribe(components => {
-        console.log(components)
-        // this.projectHttp.updateProject({
-        //   name: this.project.name,
-        //   uid: this.project.uid,
-        //   canvas: components,
-        // }).subscribe()
+        this.projectHttp.updateProject({
+          name: this.project.name,
+          uid: this.project.uid,
+          canvas: components,
+        }).subscribe()
       })
 
   }
