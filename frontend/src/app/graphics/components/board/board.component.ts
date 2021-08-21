@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { Scope } from '../../classes/view-scope.class';
 import { ComplexShapeRendererService } from '../../services/complex-shape-renderer.service';
-import { ComponentContainer, ComponentsDataService } from '../../services/components-data.service';
+import { ComponentsDataService } from '../../services/components-data.service';
 import { SnapshotObserverService } from '../../services/snapshot-observer.service';
 import { ScopeSharerService } from '../../services/scope-sharer.service';
 import { types } from '../../classes/complex-shape-renderer.class';
@@ -70,7 +70,7 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
           name: this.project.name,
           uid: this.project.uid,
           canvas: components,
-        }).subscribe(() => this.clearAndRender(components))
+        }).subscribe()
       })
 
   }
@@ -99,14 +99,5 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
       });
   }
 
-  public clearAndRender(components: ComponentContainer[]) {
-
-    this.container.nativeElement.innerHTML = '';
-
-    for (const component of components) {
-      this.complexShapeRendererService.complexShapeRenderer
-        .appendDynamicComponentToContainer(types[component.component] as any, component.options)
-    }
-  }
 
 }
