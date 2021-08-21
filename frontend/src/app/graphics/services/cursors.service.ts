@@ -111,7 +111,7 @@ export class CursorsService {
 
   public listenShapeChanges() {
     return this.ws.on<Shape>(EVENT.shape).pipe(
-      filter(cursor => cursor.name !== this.authService.name)
+      filter(cursor => cursor.name !== this.authService.name),
     );
   }
 
@@ -123,7 +123,7 @@ export class CursorsService {
       .subscribe((data) => {
         const value = { ...data, name: this.authService.name }
         if (data) {
-          this.ws.send(EVENT.shape, data);
+          this.ws.send(EVENT.shape, value);
         }
       })
   }

@@ -84,7 +84,7 @@ export class ComponentDragSource {
     );
 
     public readonly enter$ = fromEvent<MouseEvent>(this.target, 'mouseenter').pipe(
-      tap(enter => {        
+      tap(enter => {
         const position = positionFactory(enter.clientX, enter.clientY);
         const {right, bottom} = this.target.getBoundingClientRect();
         const deltaX = right - position.x;
