@@ -23,7 +23,7 @@ export class SnapshotObserverService {
   }
 
   public processInfinityObserve() {
-    interval(500)
+    interval(1000)
       .pipe(
         tap(_ => this.snapshot())
       )
