@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ComplexShapeRendererService } from 'src/app/graphics/services/complex-shape-renderer.service';
 import { CursorsService } from 'src/app/graphics/services/cursors.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-content',
@@ -10,9 +11,14 @@ import { CursorsService } from 'src/app/graphics/services/cursors.service';
 export class HeaderContentComponent implements OnInit {
 
   constructor(
+    public router: Router,
     public cursorsService: CursorsService,
   ) { }
 
   ngOnInit(): void {
+  }
+
+  back() {
+    this.router.navigate(['projects']);
   }
 }
