@@ -4,6 +4,7 @@
 @mixin button() {
   height: 48px;
   width: 100%;
+  min-width: 120px;
   border-radius: $radius-m;
   border: none;
   outline: none;

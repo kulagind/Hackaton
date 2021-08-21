@@ -1,0 +1,93 @@
+@import "src/styles";
+@import "src/styles/colors";
+
+.button {
+  width: max-content;
+  background: $primary-2;
+  color: $grayscale-10;
+}
+
+.m50 {
+  margin-top: 50px;
+}
+
+.background {
+  background-color: $grayscale-10;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+
+  .tabs {
+    width: 700px
+  }
+
+  &_controls {
+    @include flex-container('column');
+  }
+
+  &-text {
+
+    @include layer-2();
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 400px;
+    height: 100%;
+  }
+
+  &-image {
+    position: absolute;
+    right: 0;
+    height: 100%;
+
+    @include layer-1();
+  }
+}
+
+.description {
+  margin-top: $margin-xl;
+  color: $transparent-2;
+  margin-bottom: $margin-xl;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  @include layer-3();
+}
+
+.controls-preview {
+  height: 100vh;
+  width: 100%;
+
+  background: $grayscale-10;
+}
+
+.controls {
+  &-title {
+    margin-top: 85px;
+  }
+  &-layout {
+    @include flex-container();
+  }
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+
+  margin: $margin-xl 0;
+
+  border: none;
+}

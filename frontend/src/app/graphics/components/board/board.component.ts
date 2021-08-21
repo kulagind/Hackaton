@@ -4,6 +4,7 @@ import {
   ComponentFactoryResolver,
   ElementRef,
   OnDestroy,
+  QueryList,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -17,12 +18,12 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { CursorsService } from '../../services/cursors.service';
 import { ProjectHttpService } from '../../../shared/services/project-http.service';
 import { ActivatedRoute } from '@angular/router';
-import { pluck, tap } from 'rxjs/operators';
+import { exhaustMap, pluck, switchMap, tap, timeout } from 'rxjs/operators';
 import { Project } from '../../../projects/components/projects/projects.component';
 import { CommentComponent } from '../comment/comment.component';
 import { defaultGraphicComponentsPropertiesFactory } from '../../functions/default-graphic-components-properties.factory';
 import { defaultComplexShapeRenderingOptionsFactory } from '../../functions/default-complex-shape-render-options.factory';
-import { fromEvent } from 'rxjs';
+import { fromEvent, timer } from 'rxjs';
 import { globalOptions } from '../toolbar/toolbar.component';
 import { transform } from '../../functions/transform.fuction';
 import { BootstrapDecorator } from '../../classes/bootstrap-decorator.class';
@@ -54,6 +55,9 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('container')
   private readonly container!: ElementRef<SVGSVGElement>;
+
+  @ViewChild('cursors')
+  private readonly cursors: QueryList<ElementRef>;
 
   @ViewChild('container', { read: ViewContainerRef })
   private readonly target!: ViewContainerRef;
@@ -98,6 +102,17 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
         component.setAttribute('x', shape.x);
         component.setAttribute('y', shape.y);
       })
+
+    // this.cursorsService.lastMovedCursor.subscribe(name => {
+    //   try {
+    //     const cursor = this.cursors.find(el => el.nativeElement.getAttribute('id') === name);
+    //     cursor.nativeElement.parentNode.removeChild(cursor.nativeElement)
+    //     this.container.nativeElement.insertAdjacentHTML('beforeend', cursor.nativeElement);
+    //   } catch(e) {
+
+    //   }
+      
+    // });
 
   }
 

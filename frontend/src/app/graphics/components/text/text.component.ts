@@ -40,7 +40,7 @@ export class TextsComponent {
       y: position.y,
       type: 'header',
       property: {
-        width: 60,
+        width: 150,
         height: 60
       }
     }
@@ -63,7 +63,7 @@ export class TextsComponent {
       type: 'text',
 
       property: {
-        width: 120,
+        width: 200,
         height: 48
       }
     }

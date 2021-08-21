@@ -1,0 +1,33 @@
+<div class="container">
+  <app-tabs class="tabs">
+    <div appTab class="container-text">
+
+      <h1 class="mega">Easy design</h1>
+      <p class="body-m description">
+        Интуитивный редактор интерфейсов.
+        Ваш помощник в мире дизайна проектов.
+      </p>
+
+      <div class="margin-top">
+        <button class="button" routerLink="projects">К проектам</button>
+      </div>
+
+    </div>
+
+    <div appTab class="container-text">
+
+      <h1 class="mega">Введите имя</h1>
+      
+      <div class="margin-top input">
+        <input class="input__content background" [formControl]="name">
+      </div>
+
+      <div class="margin-top m50">
+        <button class="button" routerLink="projects">К проектам</button>
+      </div>
+
+    </div>
+  </app-tabs>
+
+  <app-scene></app-scene>
+</div>

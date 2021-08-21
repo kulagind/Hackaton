@@ -1,0 +1,33 @@
+@import "src/styles";
+
+.tabs {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin-left: 100px;
+  transition: all 0.8s;
+
+  &__tab {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+
+  &__first {
+    
+  }
+
+  &__second {
+    transform: rotate(-90deg);
+  }
+
+  &__third {
+    transform: rotate(180deg);
+  }
+
+  &__fourth {
+    transform: rotate(90deg);
+  }
+}

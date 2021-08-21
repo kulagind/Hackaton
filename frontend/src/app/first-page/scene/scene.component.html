@@ -1,0 +1,97 @@
+<div class="container-circles">
+  <svg #scene>
+    <circle data-depth="0.15" cx="80%" cy="55%" r="400" stroke="#E8E8EE" stroke-width="2" fill="transparent" />
+    <circle data-depth="0.2" cx="80%" cy="55%" r="300" stroke="#E8E8EE" stroke-width="2" fill="transparent" />
+    <circle data-depth="0.25" cx="80%" cy="55%" r="250" stroke="#E8E8EE" stroke-width="2" fill="transparent" />
+    <circle data-depth="0.3" cx="80%" cy="55%" r="180" stroke="#E8E8EE" stroke-width="2" fill="transparent" />
+    <circle #circlesCenter cx="80%" cy="55%" r="0" fill="transparent" />
+
+
+    <circle *ngFor="let tab of tabsService.getTabs(); let i = index"
+        class="tab"
+        [ngClass]="{'active': i === tabsService.current}"
+        data-depth="0.17"
+        [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(400, getAngle(i))[0] + ')')" 
+        [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(400, getAngle(i))[1] + ')')" 
+        r="30px"
+        fill="#7700FF"/>
+
+
+    <circle data-depth="0.22"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(300, 45)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(300, 45)[1] + ')')" 
+            r="5px"
+            fill="#E8E8EE"/>
+    <circle data-depth="0.22"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(300, 40)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(300, 40)[1] + ')')" 
+            r="5px"
+            fill="#E8E8EE"/>
+    <circle data-depth="0.23"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(300, -30)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(300, -30)[1] + ')')" 
+            r="8px"
+            fill="#7700FF"/>
+    <circle data-depth="0.22"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(300, -45)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(300, -45)[1] + ')')" 
+            r="5px"
+            fill="#7700FF"/>
+
+    <circle data-depth="0.28"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(250, 20)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(250, 20)[1] + ')')" 
+            r="10px" 
+            stroke="#FF4F12" 
+            stroke-width="8" 
+            fill="transparent"/>
+    <circle data-depth="0.27"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(250, 10)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(250, 10)[1] + ')')" 
+            r="8px"
+            fill="#FF4F12"/>
+    <circle data-depth="0.28"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(250, -65)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(250, -65)[1] + ')')" 
+            r="8px"
+            fill="#FF4F12"/>
+    <circle data-depth="0.27"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(250, -75)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(250, -75)[1] + ')')" 
+            r="5px"
+            fill="#FF4F12"/>
+    
+    <circle data-depth="0.35"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(180, -55)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(180, -55)[1] + ')')" 
+            r="10px"
+            stroke="#7700FF" 
+            stroke-width="6" 
+            fill="transparent"/>    
+    <circle data-depth="0.32"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(180, 55)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(180, 55)[1] + ')')" 
+            r="5px"
+            fill="#7700FF"/>      
+    <circle data-depth="0.32"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(180, 50)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(180, 50)[1] + ')')" 
+            r="5px"
+            fill="#7700FF"/>
+    <circle data-depth="0.32"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(180, 65)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(180, 65)[1] + ')')" 
+            r="5px"
+            fill="#E8E8EE"/>      
+    <circle data-depth="0.32"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(180, 70)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(180, 70)[1] + ')')" 
+            r="5px"
+            fill="#E8E8EE"/>
+    <circle data-depth="0.34"
+            [style.cx]="sanitizer.bypassSecurityTrustStyle('calc(80% - ' + getPointOnCircle(180, 85)[0] + ')')" 
+            [style.cy]="sanitizer.bypassSecurityTrustStyle('calc(55% - ' + getPointOnCircle(180, 85)[1] + ')')" 
+            r="15px"
+            fill="#7700FF"/> 
+  </svg>
+</div>

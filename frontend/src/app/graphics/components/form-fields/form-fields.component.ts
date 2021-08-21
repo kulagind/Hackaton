@@ -43,7 +43,7 @@ export class FormFieldsComponent {
       type: 'input',
 
       property: {
-        width: 280,
+        width: 180,
         height: 48
       }
     }
@@ -66,7 +66,7 @@ export class FormFieldsComponent {
       type: 'select',
 
       property: {
-        width: 280,
+        width: 180,
         height: 48
       }
     }

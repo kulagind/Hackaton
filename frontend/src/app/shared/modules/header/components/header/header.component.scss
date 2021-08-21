@@ -1,8 +1,14 @@
 @import "src/styles";
 
+.name {
+  margin-right: 50px
+}
+
 .header {
 
   @include flex-container('row', 'center');
+
+  justify-content: space-between;
 
   background: $grayscale-10;
   padding: 0 10px;

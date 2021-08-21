@@ -74,8 +74,6 @@ export class ComponentDragSource {
             const type = this.target.getAttribute('type');
             const isPlatform = type === 'mobile' || type === 'desktop';
 
-            console.log((movingPosition.x - startingPosition.x), (movingPosition.y - startingPosition.y))
-
             // @ts-ignore
             const updatedFO = move.target.get;
             

@@ -13,10 +13,19 @@ import {MatIconModule} from '@angular/material/icon';
 import { ProjectsModule } from './projects/projects.module';
 import { IconComponent } from './shared/modules/controls/components/icon/icon.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TabDirective } from './first-page/tabs/tab.directive';
+import { TabsComponent } from './first-page/tabs/tabs/tabs.component';
+import { WelcomeComponent } from './first-page/welcome/welcome.component';
+import { SceneComponent } from './first-page/scene/scene.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TabDirective,
+    TabsComponent,
+    WelcomeComponent,
+    SceneComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -25,7 +34,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     ControlsModule,
+    FormsModule,
     HeaderModule,
+    ReactiveFormsModule,
     WebsocketModule.config({
       url: environment.ws
     }),

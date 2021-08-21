@@ -33,6 +33,8 @@ export class CursorsService {
   private cursorOwners: ReplaySubject<string[]> = new ReplaySubject(1);
   private _cursorOwners: string[] = [];
 
+  public lastMovedCursor = new ReplaySubject<string>(1);
+
   public isCoop: boolean = true;
 
   constructor(
@@ -59,6 +61,7 @@ export class CursorsService {
           this._cursorOwners.push(cursor.name);
           this.cursorOwners.next(this._cursorOwners);
         }
+        this.lastMovedCursor.next(cursor.name);
       }
     });
 
