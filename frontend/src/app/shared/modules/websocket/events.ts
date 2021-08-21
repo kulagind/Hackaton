@@ -1,3 +1,4 @@
 export enum EVENT {
-  'cursor' = 'cursor'
+  'cursor' = 'cursor',
+  'shape' = 'shape'
 }

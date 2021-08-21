@@ -1,5 +1,5 @@
 import { Container } from '../types/container.type';
-import { filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { filter, map, switchMap, takeUntil, tap, throttleTime } from 'rxjs/operators';
 import { fromEvent } from 'rxjs';
 import { keys, Position } from './view-drag.class';
 import { transform } from '../functions/transform.fuction';
@@ -52,6 +52,14 @@ export class ComponentDragSource {
 
             return transform(isPlatform || !globalOptions.bootstrap  ? transferred : positionWithBootstrap)(this.global);
           }),
+          tap((position) => {
+            GlobalDataService.moveElementAndSend$.next({
+              x: position.x,
+              y: position.y,
+              id: this.target.getAttribute('id')
+            })
+          }),
+          throttleTime(100),
           takeUntil(fromEvent(window, 'mouseup').pipe(tap(() => GlobalDataService.changes$.next())))
         )
       })
