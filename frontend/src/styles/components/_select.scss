@@ -2,7 +2,7 @@
 @import "src/styles/typography";
 
 .select {
-  width: 280px;
+  width: 100%;
   height: 48px;
   @include body-m($grayscale-1);
   outline: none;

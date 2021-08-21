@@ -3,7 +3,7 @@
 
 @mixin button() {
   height: 48px;
-  width: 120px;
+  width: 100%;
   border-radius: $radius-m;
   border: none;
   outline: none;
