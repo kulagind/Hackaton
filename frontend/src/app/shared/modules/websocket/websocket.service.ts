@@ -34,47 +34,51 @@ export class WebsocketService implements IWebsocketService, OnDestroy {
     constructor(
       @Inject(config) private wsConfig: WebSocketConfig
     ) {
-      this.wsMessages$ = new Subject<IWsMessage<any>>();
+        this.createConnection();
+    }
+
+    createConnection(): void {
+        this.wsMessages$ = new Subject<IWsMessage<any>>();
       
-      this.reconnectInterval = wsConfig.reconnectInterval || 5000; // pause between connections
-      this.reconnectAttempts = wsConfig.reconnectAttempts || 10; // number of connection attempts
-      
-      this.config = {
-          url: wsConfig.url,
-          closeObserver: {
-              next: (event: CloseEvent) => {
-                  this.websocket$ = null;
-                  this.connection$.next(false);
-              }
-          },
-          openObserver: {
-              next: (event: Event) => {
-                  console.log('WebSocket connected!');
-                  this.connection$.next(true);
-              }
-          }
-      };
-      
-      // connection status
-      this.status = new Observable<boolean>((observer) => {
-          this.connection$ = observer;
-      }).pipe(share(), distinctUntilChanged());
-      
-      // run reconnect if not connection
-      this.statusSub = this.status
-          .subscribe((isConnected) => {
-              this.isConnected = isConnected;
-      
-              if (!this.reconnection$ && typeof(isConnected) === 'boolean' && !isConnected) {
-                  this.reconnect();
-              }
-          });
-      
-      this.websocketSub = this.wsMessages$.subscribe(
-          null, (error: ErrorEvent) => console.error('WebSocket error!', error)
-      );
-      
-      this.connect();
+        this.reconnectInterval = this.wsConfig.reconnectInterval || 5000; // pause between connections
+        this.reconnectAttempts = this.wsConfig.reconnectAttempts || 10; // number of connection attempts
+        
+        this.config = {
+            url: this.wsConfig.url,
+            closeObserver: {
+                next: (event: CloseEvent) => {
+                    this.websocket$ = null;
+                    this.connection$.next(false);
+                }
+            },
+            openObserver: {
+                next: (event: Event) => {
+                    console.log('WebSocket connected!');
+                    this.connection$.next(true);
+                }
+            }
+        };
+        
+        // connection status
+        this.status = new Observable<boolean>((observer) => {
+            this.connection$ = observer;
+        }).pipe(share(), distinctUntilChanged());
+        
+        // run reconnect if not connection
+        this.statusSub = this.status
+            .subscribe((isConnected) => {
+                this.isConnected = isConnected;
+        
+                if (!this.reconnection$ && typeof(isConnected) === 'boolean' && !isConnected) {
+                    this.reconnect();
+                }
+            });
+        
+        this.websocketSub = this.wsMessages$.subscribe(
+            null, (error: ErrorEvent) => console.error('WebSocket error!', error)
+        );
+        
+        this.connect();
     }
 
     ngOnDestroy() {

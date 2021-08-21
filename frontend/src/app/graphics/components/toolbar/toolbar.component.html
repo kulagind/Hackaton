@@ -1,1 +1,20 @@
-<p>toolbar works!</p>
+<div class="toolbar">
+
+  <button mat-icon-button class="margin-bottom icon-button" color="primary" (click)="cursorsService.changeCoopMode()">
+    <mat-icon class="icon" [ngClass]="{'active': cursorsService.isCoop}">
+      groups
+    </mat-icon>
+  </button>
+
+  <button mat-icon-button class="margin-bottom icon-button" matTooltip="Включить сетку" (click)="switchBootstrap()">
+    <mat-icon class="icon" [ngClass]="{'active': globalOptions.bootstrap}">
+      grid_4x4
+    </mat-icon>
+  </button>
+
+  <button mat-icon-button class="margin-bottom icon-button" matTooltip="Включить сетку">
+    <mat-icon class="icon">
+      chat_bubble
+    </mat-icon>
+  </button>
+</div>
