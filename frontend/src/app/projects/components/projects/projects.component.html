@@ -1,17 +1,26 @@
-<div class="projects">
+<div class="container">
+  <div class="projects">
 
-  <div class="projects-container">
-    <h3 class="headline-3">Проекты</h3>
+    <h3 class="headline-1 title">Проекты</h3>
 
     <div class="list-container">
 
       <div class="list-item" *ngFor="let project of (projects$ | async)">
-        {{ project.name }}
+        <div class="list-item-preview">
+        </div>
+
+        <div class="list-item-text">
+
+          <div>
+            <p class="headline-2 list-item-text-title">{{ project.name }}</p>
+            <p class="body-l subtitle">Проект аналитика и дизайна умного дома</p>
+          </div>
+
+          <button appButton matRipple class="list-item-text-button" (click)="navigateToBoard(project)">Перейти</button>
+
+        </div>
       </div>
 
     </div>
   </div>
-
-
-
 </div>

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ComponentContainer } from './components-data.service';
-import { interval } from 'rxjs';
+import { interval, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { LocalStorageService } from './local-storage.service';
+import { Project } from '../../projects/components/projects/projects.component';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ export class SnapshotObserverService {
   private container: SVGSVGElement;
   public components: ComponentContainer[];
 
+  public readonly components$ = new Subject<ComponentContainer[]>();
+
   constructor(private readonly local: LocalStorageService) {
   }
 
@@ -20,12 +23,12 @@ export class SnapshotObserverService {
   }
 
   public processInfinityObserve() {
-    interval(500)
+    interval(1000)
       .pipe(
         tap(_ => this.snapshot())
       )
       .subscribe(() => {
-        this.local.save(this.components);
+        this.components$.next(this.components);
       })
   }
 
