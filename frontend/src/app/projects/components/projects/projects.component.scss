@@ -49,3 +49,22 @@
 .title {
   margin: 64px 0;
 }
+
+.container-input {
+
+  margin-top: 80px;
+
+  display: flex;
+  align-items: center;
+
+  width: 70%;
+  height: 120px;
+  background: #fff;
+  border-radius: 10px;
+
+  padding: 0 38px;
+}
+
+.input {
+  margin-right: 40px;
+}

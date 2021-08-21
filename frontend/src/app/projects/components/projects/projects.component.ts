@@ -4,6 +4,7 @@ import { ProjectHttpService } from '../../../shared/services/project-http.servic
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 export interface Project {
   uid: string;
@@ -18,6 +19,7 @@ export interface Project {
 })
 export class ProjectsComponent implements OnInit {
 
+  public control = new FormControl('');
   public projects$: Observable<Project[]> = this.http.getAllProject()
     .pipe(
       shareReplay(1)
@@ -31,8 +33,10 @@ export class ProjectsComponent implements OnInit {
 
   public navigateToBoard(project: Project) {
     this.router.navigate([`board/${project.uid}`]);
-
   }
 
-
+  public create() {
+    const name = this.control.value;
+    this.http.createProject(name).subscribe();
+  }
 }

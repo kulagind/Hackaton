@@ -4,6 +4,8 @@ import { ProjectComponent } from './components/project/project.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ButtonsModule } from '../shared/modules/buttons/buttons.module';
 import { MatRippleModule } from '@angular/material/core';
+import { ControlsModule } from '../shared/modules/controls/controls.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +17,9 @@ import { MatRippleModule } from '@angular/material/core';
   imports: [
     CommonModule,
     ButtonsModule,
-    MatRippleModule
+    MatRippleModule,
+    ControlsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [ProjectsComponent]
 })

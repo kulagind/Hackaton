@@ -6,7 +6,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { ChipsComponent } from './components/chips/chips.component';
 import { InputComponent } from './components/input/input.component';
 import { SelectComponent } from './components/select/select.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { IconComponent } from './components/icon/icon.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -39,7 +39,8 @@ import { DarkToggleComponent } from './components/dark-toggle/dark-toggle.compon
   imports: [
     CommonModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
   ]
 })
 export class ControlsModule {

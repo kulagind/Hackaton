@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -7,6 +7,9 @@ import { ControlValueAccessor } from '@angular/forms';
   styleUrls: ['./input.component.scss']
 })
 export class InputComponent implements OnInit, ControlValueAccessor {
+
+  @Input()
+  public control = new FormControl();
 
   onChange: (value: any) => any;
   onTouched: () => any;
