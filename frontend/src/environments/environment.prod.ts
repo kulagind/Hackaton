@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  ws: 'ws://team-p.ru/ws',
+  ws: 'ws://194.67.93.2/ws',
 };

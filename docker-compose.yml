@@ -60,8 +60,10 @@ services:
             - 8000:8000
 # запускаем gunicorn
         command: "gunicorn -c gunicorn.py backend.wsgi"
+
         depends_on:
           - postgres
+
     postgres:
 # Ниже даже расписывать не хочу, насколько все просто: логин, пароль, БД, порты и т.д.
         image: postgres:13-alpine
