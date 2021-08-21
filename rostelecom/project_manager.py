@@ -10,9 +10,9 @@ class ProjectManager:
     result_list = []
     for instance in instances:
       result = {"uid": instance.guid,
-                "name": instance.canvas,
+                "name": instance.name,
                 "canvas": instance.canvas}
-      result_list.append({result})
+      result_list.append(result)
     return result_list
 
   def create_project(self, params):
@@ -20,14 +20,14 @@ class ProjectManager:
             "canvas": params.get("canvas")}
     instance = self.model.objects.create(**data)
     result = {"uid": instance.guid,
-              "name": instance.canvas,
+              "name": instance.name,
               "canvas": instance.canvas}
     return result
 
   def get_project(self, guid):
     instance = self.model.objects.filter(guid=guid).first()
     result = {"uid": instance.guid,
-              "name": instance.canvas,
+              "name": instance.name,
               "canvas": instance.canvas}
     return result
 
@@ -41,7 +41,7 @@ class ProjectManager:
       instance.canvas = canvas
     instance.save()
     result = {"uid": instance.guid,
-              "name": instance.canvas,
+              "name": instance.name,
               "canvas": instance.canvas}
     return result
 
