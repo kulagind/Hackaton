@@ -19,7 +19,7 @@ class Connection {
 
   dispatch(message, ws) {
     const parsedMessage = JSON.parse(message);
-    Connection.server.clients.forEach(client => client.send(message));
+    Connection.server.clients.forEach(client => client.send(JSON.stringify(parsedMessage)));
   }
 }
 
