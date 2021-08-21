@@ -59,9 +59,6 @@ export class DynamicComponentContainerDecorator {
   private readonly componentBehaviorDecorator: NonNullable<ComponentBehaviorDecorator>
     = new ComponentBehaviorDecorator(this.target, this.overlay);
 
-  private readonly bootstrapDecorator: NonNullable<BootstrapDecorator>
-    = new BootstrapDecorator(this.target);
-
   constructor(private readonly target: Container, private readonly overlay: SVGSVGElement) {
     this.componentBehaviorDecorator.decorateComponentContainer();
   }
@@ -75,8 +72,6 @@ export class DynamicComponentContainerDecorator {
     this.target.setAttribute('id', options.id);
 
     this.target.classList.add('ui-element-container');
-
-    this.bootstrapDecorator.decorateContainer();
 
     return this.target;
   }
