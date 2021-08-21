@@ -4,4 +4,4 @@ COPY . /srv/www/rostelecom
 WORKDIR /srv/www/rostelecom
 
 RUN pip install -r requirements.txt
-#RUN python manage.py makemigrations
+CMD python manage.py makemigrations
