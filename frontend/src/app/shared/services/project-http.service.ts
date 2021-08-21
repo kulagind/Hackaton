@@ -24,4 +24,8 @@ export class ProjectHttpService {
   public getProject(id: string): Observable<Project> {
     return this.http.get<Project>(`${this.api}/${id}`)
   }
+
+  public updateProject(project: Project): Observable<any> {
+    return this.http.patch(`${this.api}/${project.uid}`, project);
+  }
 }

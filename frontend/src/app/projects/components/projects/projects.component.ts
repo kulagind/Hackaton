@@ -6,7 +6,7 @@ import { shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 export interface Project {
-  id: string;
+  uid: string;
   name: string;
   canvas: ComponentContainer[];
 }
@@ -30,7 +30,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   public navigateToBoard(project: Project) {
-    this.router.navigate([`board/${project.id}`]);
+    this.router.navigate([`board/${project.uid}`]);
 
   }
 

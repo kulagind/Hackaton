@@ -16,8 +16,9 @@ import { types } from '../../classes/complex-shape-renderer.class';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { CursorsService } from '../../services/cursors.service';
 import { ProjectHttpService } from '../../../shared/services/project-http.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { pluck } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { pluck, tap } from 'rxjs/operators';
+import { Project } from '../../../projects/components/projects/projects.component';
 
 @Component({
   selector: 'app-board',
@@ -27,6 +28,7 @@ import { pluck } from 'rxjs/operators';
 export class BoardComponent implements AfterViewInit, OnDestroy {
 
   private scope!: NonNullable<Readonly<Scope>>;
+  private project: Project;
 
   constructor(
     private readonly snapshotObserverService: SnapshotObserverService,
@@ -62,6 +64,15 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
     this.initialComponentsRender();
     this.snapshotObserverService.processInfinityObserve();
 
+    this.snapshotObserverService.components$
+      .subscribe(components => {
+        this.projectHttp.updateProject({
+          name: this.project.name,
+          uid: this.project.uid,
+          canvas: components,
+        }).subscribe()
+      })
+
   }
 
   ngOnDestroy(): void {
@@ -73,7 +84,10 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
     const query = this.router.snapshot.paramMap.get('id');
 
     this.projectHttp.getProject(query)
-      .pipe(pluck('canvas'))
+      .pipe(
+        tap(project => this.project = project),
+        pluck('canvas')
+      )
       .subscribe(components => {
         if (components) {
           for (const component of components) {
