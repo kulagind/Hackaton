@@ -2,7 +2,13 @@
 
   <svg #container width="70%" height="100vh" class="board-container">
 
-
+    <foreignObject *ngFor="let owner of cursorsService.cursorOwners$ | async"
+                    [style.x]="(cursorsService.getCursorByName(owner) | async).x"
+                    [style.y]="(cursorsService.getCursorByName(owner) | async).y"
+                    width="500px"
+                    height="150px">
+      <app-cursor [name]="owner"></app-cursor>
+    </foreignObject>
   </svg>
 
   <app-sidebar class="sidebar"></app-sidebar>

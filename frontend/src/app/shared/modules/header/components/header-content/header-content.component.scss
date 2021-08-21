@@ -8,3 +8,25 @@
   margin-left: $margin-xl;
   color: $primary-1;
 }
+
+.coop {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    font-size: 40px;
+    display: block;
+    color: $grayscale-6;
+  }
+
+  &__active {
+    color: $primary-1;
+  }
+  
+}
+

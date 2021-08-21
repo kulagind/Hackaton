@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  ws: 'ws://team-p.ru/ws',
 };

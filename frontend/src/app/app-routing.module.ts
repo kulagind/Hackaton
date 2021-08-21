@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { BoardComponent } from './graphics/components/board/board.component';
 
 const routes: Routes = [
-  { path: 'board', component: BoardComponent }
+  { path: 'board', component: BoardComponent },
+  { path: '**', redirectTo: 'board' }
 ];
 
 @NgModule({

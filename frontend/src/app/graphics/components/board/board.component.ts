@@ -14,6 +14,7 @@ import { SnapshotObserverService } from '../../services/snapshot-observer.servic
 import { ScopeSharerService } from '../../services/scope-sharer.service';
 import { types } from '../../classes/complex-shape-renderer.class';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { CursorsService } from '../../services/cursors.service';
 
 @Component({
   selector: 'app-board',
@@ -30,7 +31,8 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
     private readonly local: LocalStorageService,
     private readonly complexShapeRendererService: ComplexShapeRendererService,
     private readonly factory: ComponentFactoryResolver,
-    private scopeService: ScopeSharerService
+    private scopeService: ScopeSharerService,
+    public readonly cursorsService: CursorsService
   ) {
   }
 
@@ -44,8 +46,7 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
     const viewBox = this.scopeService.getScopeParams();
     this.scope = new Scope(this.container.nativeElement, viewBox);
     this.scopeService.setScope(this.scope);
-    // this.cursorsService.connect(this.container.nativeElement);
-
+    this.cursorsService.connect(this.container.nativeElement);
     this.snapshotObserverService
       .build(this.container.nativeElement);
 
@@ -59,6 +60,7 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.cursorsService.disconnect();
   }
 
   private initialComponentsRender() {
