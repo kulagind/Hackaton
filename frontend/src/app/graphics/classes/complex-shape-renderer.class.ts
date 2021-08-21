@@ -16,8 +16,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { SelectComponent } from 'src/app/shared/modules/controls/components/select/select.component';
 import { IconComponent } from 'src/app/shared/modules/controls/components/icon/icon.component';
 import { HeaderComponent } from 'src/app/shared/modules/controls/components/header/header.component';
-import { TextComponent } from 'src/app/shared/modules/controls/components/text/text.component';
 import { CommentComponent } from '../components/comment/comment.component';
+import { TextComponent } from '../../shared/modules/controls/components/text/text.component';
 
 export const namespace = 'http://www.w3.org/2000/svg';
 
