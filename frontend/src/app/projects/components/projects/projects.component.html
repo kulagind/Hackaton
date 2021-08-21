@@ -1,0 +1,17 @@
+<div class="projects">
+
+  <div class="projects-container">
+    <h3 class="headline-3">Проекты</h3>
+
+    <div class="list-container">
+
+      <div class="list-item" *ngFor="let project of (projects$ | async)">
+        {{ project.name }}
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>

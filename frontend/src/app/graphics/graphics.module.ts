@@ -24,6 +24,8 @@ import { ControlsComponent } from './components/controls/controls.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatRippleModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ChipsModule,
     MatButtonModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    HttpClientModule,
+    MatRippleModule
   ],
   bootstrap: [BoardComponent]
 })

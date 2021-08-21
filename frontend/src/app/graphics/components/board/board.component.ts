@@ -15,6 +15,7 @@ import { ScopeSharerService } from '../../services/scope-sharer.service';
 import { types } from '../../classes/complex-shape-renderer.class';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { CursorsService } from '../../services/cursors.service';
+import { ProjectHttpService } from '../../../shared/services/project-http.service';
 
 @Component({
   selector: 'app-board',

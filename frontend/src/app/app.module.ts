@@ -10,12 +10,14 @@ import { WebsocketModule } from './shared/modules/websocket/websocket.module';
 import { CursorsService } from './graphics/services/cursors.service';
 import { environment } from 'src/environments/environment';
 import {MatIconModule} from '@angular/material/icon';
+import { ProjectsModule } from './projects/projects.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    ProjectsModule,
     GraphicsModule,
     BrowserModule,
     AppRoutingModule,
