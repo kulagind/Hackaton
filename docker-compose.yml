@@ -64,7 +64,7 @@ services:
 # Ниже даже расписывать не хочу, насколько все просто: логин, пароль, БД, порты и т.д.
         image: postgres:13-alpine
         ports:
-            - 5433:5432
+            - 5432:5433
         environment:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: postgres
