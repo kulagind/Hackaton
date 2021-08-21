@@ -40,7 +40,7 @@ export class ComplexShapeRenderer {
       component.style.color = '#B5B7C0';
     }
 
-    const properties = { ...options, id: uuidv4() };
+    const properties = { ...options, id: options.id ?? uuidv4() };
 
     new DynamicComponentContainerDecorator(container, this.container)
       .decorateDynamicComponentContainer(properties)
