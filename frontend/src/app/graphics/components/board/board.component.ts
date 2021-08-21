@@ -10,11 +10,7 @@ import {
 import { Scope } from '../../classes/view-scope.class';
 import { ComplexShapeRendererService } from '../../services/complex-shape-renderer.service';
 import { ComponentsDataService } from '../../services/components-data.service';
-<<<<<<< HEAD
-import { SnapshotObserverService } from '../../services/snapshot-observer.service';
-=======
 import { GlobalDataService, SnapshotObserverService } from '../../services/snapshot-observer.service';
->>>>>>> element-list
 import { ScopeSharerService } from '../../services/scope-sharer.service';
 import { types } from '../../classes/complex-shape-renderer.class';
 import { LocalStorageService } from '../../services/local-storage.service';
