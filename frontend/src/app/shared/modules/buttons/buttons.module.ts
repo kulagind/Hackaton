@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonDirective } from './directives/button.directive';
 import { ButtonComponent } from './components/button/button.component';
+import { MatRippleModule } from '@angular/material/core';
 
 
 
@@ -14,8 +15,9 @@ import { ButtonComponent } from './components/button/button.component';
         ButtonDirective,
         ButtonComponent
     ],
-  imports: [
-    CommonModule
-  ]
+    imports: [
+        CommonModule,
+        MatRippleModule
+    ]
 })
 export class ButtonsModule { }
