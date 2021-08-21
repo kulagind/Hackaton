@@ -23,7 +23,7 @@ export class CursorsService {
   private subSend: SubscriptionLike;
   private _cursors: Map<string, ReplaySubject<Cursor>> = new Map();
   private cursorOwners: ReplaySubject<string[]> = new ReplaySubject(1);
-  private _cursorOwners: string[] = [];  
+  private _cursorOwners: string[] = [];
 
   public isCoop: boolean = true;
 

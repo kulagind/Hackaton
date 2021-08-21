@@ -11,31 +11,36 @@ import { MatIconModule } from '@angular/material/icon';
 import { IconComponent } from './components/icon/icon.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TextComponent } from './components/text/text.component';
-
+import { DarkToggleComponent } from './components/dark-toggle/dark-toggle.component';
 
 
 @NgModule({
-    declarations: [
-        ToggleComponent,
-        SliderComponent,
-        CheckboxComponent,
-        ChipsComponent,
-        InputComponent,
-        SelectComponent,
-        IconComponent,
-        HeaderComponent,
-        TextComponent,
-    ],
-    exports: [
-        ToggleComponent,
-        InputComponent,
-        SelectComponent,
-        IconComponent,
-    ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        MatIconModule
-    ]
+  declarations: [
+    ToggleComponent,
+    SliderComponent,
+    CheckboxComponent,
+    ChipsComponent,
+    InputComponent,
+    SelectComponent,
+    IconComponent,
+    DarkToggleComponent,
+    HeaderComponent,
+    TextComponent,
+  ],
+  exports: [
+    ToggleComponent,
+    InputComponent,
+    SelectComponent,
+    IconComponent,
+    DarkToggleComponent,
+    HeaderComponent,
+    TextComponent,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatIconModule
+  ]
 })
-export class ControlsModule { }
+export class ControlsModule {
+}

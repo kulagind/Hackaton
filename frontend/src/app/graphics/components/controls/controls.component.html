@@ -1,14 +1,22 @@
 <div class="platform">
-  <app-graphic-component-container class="platform-card" cdkDropList>
+  <app-graphic-component-container class="platform-card" cdkDropList #contentComponent>
     <app-graphic-component-container-name>
       Переключатель
     </app-graphic-component-container-name>
 
     <app-graphic-component-container-content class="platform-card-content">
       <app-toggle cdkDrag
-                 (cdkDragDropped)="handleSwitchDrop($event)"
-                 (cdkDragStarted)="handleStartedPoint($event)">
+                  *ngIf="contentComponent.control.selected.includes('light')"
+                  (cdkDragDropped)="handleSwitchDrop($event)"
+                  (cdkDragStarted)="handleStartedPoint($event)">
       </app-toggle>
+
+      <app-dark-toggle cdkDrag
+                       *ngIf="contentComponent.control.selected.includes('dark')"
+                       (cdkDragDropped)="handleDarkSwitchDrop($event)"
+                       (cdkDragStarted)="handleStartedPoint($event)">
+      </app-dark-toggle>
+
     </app-graphic-component-container-content>
 
     <app-graphic-component-container-description>

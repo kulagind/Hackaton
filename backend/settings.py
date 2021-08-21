@@ -97,7 +97,7 @@ DATABASES = {
         'NAME': 'rostelecom_design',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': '0.0.0.0',
+        'HOST': 'postgres',
         'PORT': 5432
     }
 }

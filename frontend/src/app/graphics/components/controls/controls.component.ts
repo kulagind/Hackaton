@@ -9,6 +9,7 @@ import { InputComponent } from '../../../shared/modules/controls/components/inpu
 import { ToggleComponent } from '../../../shared/modules/controls/components/toggle/toggle.component';
 import { ButtonComponent } from '../../../shared/modules/buttons/components/button/button.component';
 import { bootstrap } from '../../classes/component-behavior-decorator.class';
+import { DarkToggleComponent } from '../../../shared/modules/controls/components/dark-toggle/dark-toggle.component';
 
 @Component({
   selector: 'app-controls',
@@ -57,4 +58,24 @@ export class ControlsComponent {
     }
   }
 
+  public handleDarkSwitchDrop(event: CdkDragDrop<any>) {
+    const { x, y } = event.dropPoint;
+    const deltaX = x - this.pickupPositionInElement.x;
+    const deltaY = y - this.pickupPositionInElement.y;
+    const position = transform({x: deltaX, y: deltaY})(this.complexShapeRendererService.container);
+
+    const options: ComplexShapeRenderOptions = {
+      x: position.x,
+      y: position.y,
+      type: 'toggle',
+      property: {
+        width: 60,
+        height: 60
+      }
+    }
+
+    this.complexShapeRendererService
+      .complexShapeRenderer
+      .appendDynamicComponentToContainer(DarkToggleComponent, options);
+  }
 }
