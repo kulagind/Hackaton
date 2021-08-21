@@ -22,7 +22,7 @@ export class SnapshotObserverService {
 
   public readonly components$ = new Subject<ComponentContainer[]>();
 
-  constructor(private readonly local: LocalStorageService, private readonly componentsDataService: ComponentsDataService) {
+  constructor() {
   }
 
   public build(container: SVGSVGElement) {

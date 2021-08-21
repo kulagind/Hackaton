@@ -4,7 +4,20 @@
     <ng-content select="app-graphic-component-container-name"></ng-content>
   </div>
 
-  <div class="container-content margin-top margin-bottom">
+  <div class="container-content container-content_light margin-top margin-bottom">
+
+    <div class="themes">
+
+      <div class="theme themes-dark" (click)="control.select('dark')">
+        <mat-icon class="icon" *ngIf="control.selected.includes('dark')">check</mat-icon>
+      </div>
+
+      <div class="theme themes-light" (click)="control.select('light')">
+        <mat-icon class="icon" *ngIf="control.selected.includes('light')">check</mat-icon>
+      </div>
+
+    </div>
+
     <ng-content select="app-graphic-component-container-content"></ng-content>
   </div>
 
