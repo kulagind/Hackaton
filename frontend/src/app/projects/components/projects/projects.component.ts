@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ComponentContainer } from '../../../graphics/services/components-data.service';
 import { ProjectHttpService } from '../../../shared/services/project-http.service';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 export interface Project {
   id: string;
   name: string;
-  Canvas: ComponentContainer[];
+  canvas: ComponentContainer[];
 }
 
 @Component({
@@ -16,19 +18,20 @@ export interface Project {
 })
 export class ProjectsComponent implements OnInit {
 
-  public projects$: Observable<Project[]> = new BehaviorSubject<Project[]>([{
-    name: 'Умный дом',
-    id: '12',
-    Canvas: []
-  }]).asObservable();
+  public projects$: Observable<Project[]> = this.http.getAllProject()
+    .pipe(
+      shareReplay(1)
+    );
 
-  // public projects$: Observable<Project[]> = this.http.getAllProject();
-
-  constructor(private readonly http: ProjectHttpService ) {
-    // this.http.createProject('Умный дом')
+  constructor(private readonly http: ProjectHttpService, private readonly router: Router) {
   }
 
   ngOnInit(): void {
+  }
+
+  public navigateToBoard(project: Project) {
+    this.router.navigate([`board/${project.id}`]);
+
   }
 
 
