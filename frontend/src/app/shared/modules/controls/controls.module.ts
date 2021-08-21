@@ -9,6 +9,8 @@ import { SelectComponent } from './components/select/select.component';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { IconComponent } from './components/icon/icon.component';
+import { HeaderComponent } from './components/header/header.component';
+import { TextComponent } from './components/text/text.component';
 import { DarkToggleComponent } from './components/dark-toggle/dark-toggle.component';
 
 
@@ -22,6 +24,8 @@ import { DarkToggleComponent } from './components/dark-toggle/dark-toggle.compon
     SelectComponent,
     IconComponent,
     DarkToggleComponent,
+    HeaderComponent,
+    TextComponent,
   ],
   exports: [
     ToggleComponent,
@@ -29,6 +33,8 @@ import { DarkToggleComponent } from './components/dark-toggle/dark-toggle.compon
     SelectComponent,
     IconComponent,
     DarkToggleComponent,
+    HeaderComponent,
+    TextComponent,
   ],
   imports: [
     CommonModule,

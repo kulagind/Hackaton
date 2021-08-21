@@ -13,6 +13,10 @@ import { ButtonComponent } from '../../shared/modules/buttons/components/button/
 import { InputComponent } from '../../shared/modules/controls/components/input/input.component';
 import { GlobalDataService } from '../services/snapshot-observer.service';
 import { v4 as uuidv4 } from 'uuid'
+import { SelectComponent } from 'src/app/shared/modules/controls/components/select/select.component';
+import { IconComponent } from 'src/app/shared/modules/controls/components/icon/icon.component';
+import { HeaderComponent } from 'src/app/shared/modules/controls/components/header/header.component';
+import { TextComponent } from '../components/text/text.component';
 
 export const namespace = 'http://www.w3.org/2000/svg';
 
@@ -90,4 +94,8 @@ export const types: Dictionary<any> = {
   'mobile': MobilePlatformComponent,
   'button': ButtonComponent,
   'input': InputComponent,
+  'select': SelectComponent,
+  'icon': IconComponent,
+  'header': HeaderComponent,
+  'text': TextComponent
 }

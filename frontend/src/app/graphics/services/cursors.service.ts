@@ -64,7 +64,6 @@ export class CursorsService {
       })
     ).subscribe(event => {
       this.ws.send(EVENT.cursor, {x: event.x, y: event.y, name: this.authService.name});
-      // this.ws.send(EVENT.cursor, {x: event.x + 100, y: event.y + 100, name: 'Billy'});
     });
   }
 
