@@ -8,6 +8,7 @@ import { ComplexShapeRenderOptions } from '../../types/complex-shape-rendere-opt
 import { InputComponent } from '../../../shared/modules/controls/components/input/input.component';
 import { ToggleComponent } from '../../../shared/modules/controls/components/toggle/toggle.component';
 import { ButtonComponent } from '../../../shared/modules/buttons/components/button/button.component';
+import { bootstrap } from '../../classes/component-behavior-decorator.class';
 
 @Component({
   selector: 'app-controls',
@@ -52,7 +53,7 @@ export class ControlsComponent {
     const { x, y } = event.dropPoint;
     const deltaX = x - this.pickupPositionInElement.x;
     const deltaY = y - this.pickupPositionInElement.y;
-    const position = transform({x: deltaX, y: deltaY})(this.complexShapeRendererService.container);
+    const position = transform({x: bootstrap(deltaX, 8), y: bootstrap(deltaY, 16)})(this.complexShapeRendererService.container);
 
     const options: ComplexShapeRenderOptions = {
       x: position.x,

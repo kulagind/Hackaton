@@ -6,5 +6,13 @@ export class BootstrapDecorator {
   }
 
   public decorateContainer()  {
+
+  }
+
+  public getColumn(): SVGRectElement {
+
+    const rect: SVGRectElement = document.createElementNS(namespace, 'rect');
+
+    return document.createElementNS(namespace, 'rect')
   }
 }

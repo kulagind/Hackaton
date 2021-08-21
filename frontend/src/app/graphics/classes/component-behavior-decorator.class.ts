@@ -1,5 +1,5 @@
 import { Container } from '../types/container.type';
-import { delay, filter, map, skip, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { fromEvent } from 'rxjs';
 import { keys, Position } from './view-drag.class';
 import { transform } from '../functions/transform.fuction';
@@ -24,6 +24,8 @@ export class ComponentBehaviorDecorator {
 
 export class ComponentDragSource {
 
+  public readonly type = this.target.getAttribute('type');
+
   public readonly move$ = fromEvent<MouseEvent>(window, 'mousemove');
   public readonly drag$ = fromEvent<MouseEvent>(this.target, 'mousedown')
     .pipe(
@@ -34,10 +36,19 @@ export class ComponentDragSource {
         return this.move$.pipe(
           map(move => {
             const transferred: Position = {
-              x: move.clientX - shift.x,
-              y: move.clientY - shift.y
+              x: Math.ceil(move.clientX - shift.x),
+              y: Math.ceil(move.clientY - shift.y)
             };
-            return transform({ x: transferred.x, y: transferred.y })(this.global);
+
+            const positionWithBootstrap = {
+              x: bootstrap(transferred.x, 8),
+              y: bootstrap(transferred.y, 16),
+            }
+
+            const type = this.target.getAttribute('type');
+            const isPlatform = type === 'mobile' || type === 'desktop';
+
+            return transform(isPlatform ? transferred : positionWithBootstrap)(this.global);
           }),
           takeUntil(fromEvent(window, 'mouseup'))
         )
@@ -64,4 +75,8 @@ export function shiftFactory(
 
 export function positionFactory(x: number, y: number): NonNullable<Readonly<Position>> {
   return { x, y };
+}
+
+export function bootstrap(x: number, bootstrap = 8): number {
+  return x % bootstrap < 3 ? (x % bootstrap === 0 ? x : Math.floor(x / bootstrap) * bootstrap) : Math.ceil(x / bootstrap) * bootstrap
 }
