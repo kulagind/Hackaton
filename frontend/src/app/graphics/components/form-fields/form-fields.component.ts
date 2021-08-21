@@ -10,6 +10,7 @@ import { DesktopPlatformComponent } from '../platform/components/desktop-platfor
 import { ToggleComponent } from '../../../shared/modules/controls/components/toggle/toggle.component';
 import { ButtonComponent } from '../../../shared/modules/buttons/components/button/button.component';
 import { InputComponent } from '../../../shared/modules/controls/components/input/input.component';
+import { SelectComponent } from 'src/app/shared/modules/controls/components/select/select.component';
 
 @Component({
   selector: 'app-form-fields',
@@ -50,6 +51,29 @@ export class FormFieldsComponent {
     this.complexShapeRendererService
       .complexShapeRenderer
       .appendDynamicComponentToContainer(InputComponent, options);
+  }
+
+  public handleSelectorDrop(event: CdkDragDrop<any>) {
+    const { x, y } = event.dropPoint;
+    const deltaX = x - this.pickupPositionInElement.x;
+    const deltaY = y - this.pickupPositionInElement.y;
+    const position = transform({x: deltaX, y: deltaY})(this.complexShapeRendererService.container);
+
+    const options: ComplexShapeRenderOptions = {
+      x: position.x,
+      y: position.y,
+
+      type: 'input',
+
+      property: {
+        width: 280,
+        height: 48
+      }
+    }
+
+    this.complexShapeRendererService
+      .complexShapeRenderer
+      .appendDynamicComponentToContainer(SelectComponent, options);
   }
 
   public handleStartedPoint(event: CdkDragStart<any>, isBackground = false): void {
