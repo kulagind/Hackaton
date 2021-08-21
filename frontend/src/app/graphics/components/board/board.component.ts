@@ -89,6 +89,17 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
         }).subscribe()
       })
 
+    this.cursorsService.sendShapes();
+
+    this.cursorsService
+      .listenShapeChanges()
+      .subscribe((shape: any) => {
+        const component = document.getElementById(shape.id);
+
+        component.setAttribute('x', shape.x);
+        component.setAttribute('y', shape.y);
+      })
+
   }
 
   ngOnDestroy(): void {

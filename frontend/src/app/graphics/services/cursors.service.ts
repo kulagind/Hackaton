@@ -2,11 +2,13 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { fromEvent, ReplaySubject, SubscriptionLike } from 'rxjs';
-import { filter, map, throttleTime } from 'rxjs/operators';
+import { filter, map, tap, throttleTime } from 'rxjs/operators';
 import { EVENT } from '../../shared/modules/websocket/events';
 import { WebsocketService } from '../../shared/modules/websocket/websocket.service';
 import { AuthService } from '../../shared/services/auth.service';
 import { ComplexShapeRendererService } from './complex-shape-renderer.service';
+import { ComponentContainer } from './components-data.service';
+import { GlobalDataService } from './snapshot-observer.service';
 
 export interface Cursor {
   name: string,
@@ -63,7 +65,7 @@ export class CursorsService {
         return mousePoint.matrixTransform(svgContainer.getScreenCTM().inverse())
       })
     ).subscribe(event => {
-      this.ws.send(EVENT.cursor, {x: event.x, y: event.y, name: this.authService.name});
+      this.ws.send(EVENT.cursor, { x: event.x, y: event.y, name: this.authService.name });
     });
   }
 
@@ -99,5 +101,20 @@ export class CursorsService {
       this.ws.createConnection();
       this.connect(this.complexShapeRenderer.container);
     }
+  }
+
+  public listenShapeChanges() {
+    return this.ws.on(EVENT.shape).pipe();
+  }
+
+  public sendShapes() {
+    GlobalDataService.moveElementAndSend$
+      .subscribe((data) => {
+        const value = { ...data, name: this._cursorOwners }
+        if (data) {
+          this.ws.send(EVENT.shape, data);
+        }
+
+      })
   }
 }
