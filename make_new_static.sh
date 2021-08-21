@@ -12,7 +12,7 @@ npm run build --prod
 
 cd ..
 
-sudo rm -r ststic/
+sudo rm -r static/
 
 mkdir static
 
@@ -21,5 +21,3 @@ cp -r frontend/dist/Design/*  static/
 docker-compose build
 
 docker-compose up -d
-
-
