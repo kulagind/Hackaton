@@ -1,53 +1,40 @@
 version: '3'
 
-# хранилища
 volumes:
     pgdata:
         driver: local
+
 services:
     node:
-      restart: always
-      image: node:latest
-      expose:
-        - 8999
-      ports:
-        - "8999:8999"
-      volumes:
-#        - ./static:/srv/www/rostelecom/static
-        - ./websocket:/srv/www/rostelecom/websocket
-      command:
-        bash -c "cd /srv/www/rostelecom/websocket
-        && npm install
-        && node /srv/www/rostelecom/websocket/index.js"
-#        bash -c "cd ./frontend
-#        && npm install
-#        && npm build
-#        && cp -r ./dist/Design/* *service-volume
-
+        restart: always
+        image: node:latest
+        expose:
+          - 8999
+        ports:
+          - "8999:8999"
+        volumes:
+          - ./websocket:/srv/www/rostelecom/websocket
+        command:
+          bash -c "cd /srv/www/rostelecom/websocket
+          && npm install
+          && node /srv/www/rostelecom/websocket/index.js"
 
     nginx:
-# при падении будет стараться подняться
         restart: always
-# только свежий nginx
         image: nginx:latest
-# слушает порт 8080
         expose:
           - 80
-# мапаем порт 80 на его 8080. Тогда сайт будет доступен по адресу localhost. Убедись, что порт у тебя не занят.
         ports:
           - "80:80"
-# монтируем только те директории, в которых лежит статика, т.к. nginx с динамикой не будет работать. Также директорию с логами и файл настройки, который мы подготовили.
         volumes:
             - ./static:/srv/www/rostelecom/static
             - ./media:/srv/www/rostelecom/media
             - ./logs:/srv/www/rostelecom/logs
             - ./nginx:/etc/nginx/conf.d
-# и nginx зависит от контейнера python. Т.е. python должен быть запущен первым
         depends_on:
             - python
 
     postgres:
-# Ниже даже расписывать не хочу, насколько все просто: логин, пароль, БД, порты и т.д.
         image: postgres:13-alpine
         ports:
             - "5432:5432"
@@ -61,26 +48,15 @@ services:
 
     python:
         restart: always
-# указываем откуда собирать образ
         build:
             context: .
             dockerfile: ./Dockerfile
-# монтируем директорию проекта
         volumes:
             - ./:/srv/www/rostelecom
         expose:
           - 8000
         ports:
             - "8000:8000"
-# запускаем gunicorn
-        #python manage.py migrate &&
         command: bash -c "python manage.py migrate && gunicorn -c gunicorn.py backend.wsgi"
         depends_on:
           - postgres
-#networks:
-#  default:
-#    driver: bridge
-#    ipam:
-#      driver: default
-#      config:
-#      - subnet:  172.17.0.1/16
