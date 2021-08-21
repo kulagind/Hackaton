@@ -1,13 +1,14 @@
 #!/bin/bash
-echo"Git checkout master"
+echo" Git checkout master "
 
 git checkout master
 
-echo"Git pull"
+echo"Git pull "
 git pull
 
-echo"Go to frontend dir"
-cd frontend
+echo" Go to frontend dir "
+
+cd frontend/ || exit
 
 echo"Npm install"
 sudo npm install
