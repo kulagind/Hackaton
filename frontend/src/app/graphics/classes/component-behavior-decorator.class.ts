@@ -43,14 +43,14 @@ export class ComponentDragSource {
             };
 
             const positionWithBootstrap = {
-              x: bootstrap(transferred.x, 8),
-              y: bootstrap(transferred.y, 16),
+              x: bootstrap(transferred.x, 32),
+              y: bootstrap(transferred.y, 32),
             }
 
             const type = this.target.getAttribute('type');
             const isPlatform = type === 'mobile' || type === 'desktop';
 
-            return transform(isPlatform || !globalOptions.bootstrap ? transferred : positionWithBootstrap)(this.global);
+            return transform(isPlatform || !globalOptions.bootstrap  ? transferred : positionWithBootstrap)(this.global);
           }),
           takeUntil(fromEvent(window, 'mouseup').pipe(tap(() => GlobalDataService.changes$.next())))
         )
@@ -80,5 +80,5 @@ export function positionFactory(x: number, y: number): NonNullable<Readonly<Posi
 }
 
 export function bootstrap(x: number, bootstrap = 8): number {
-  return x % bootstrap < 3 ? (x % bootstrap === 0 ? x : Math.floor(x / bootstrap) * bootstrap) : Math.ceil(x / bootstrap) * bootstrap
+  return x % bootstrap < (bootstrap / 2)  ? (x % bootstrap === 0 ? x : Math.floor(x / bootstrap) * bootstrap) : Math.ceil(x / bootstrap) * bootstrap
 }

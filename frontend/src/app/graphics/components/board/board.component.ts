@@ -25,6 +25,7 @@ import { defaultComplexShapeRenderingOptionsFactory } from '../../functions/defa
 import { fromEvent } from 'rxjs';
 import { globalOptions } from '../toolbar/toolbar.component';
 import { transform } from '../../functions/transform.fuction';
+import { BootstrapDecorator } from '../../classes/bootstrap-decorator.class';
 
 @Component({
   selector: 'app-board',
@@ -75,6 +76,10 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
 
     this.appendCommentAfterClick();
 
+    new BootstrapDecorator(this.container.nativeElement)
+      .decorateContainer()
+
+
     this.snapshotObserverService.components$
       .subscribe(components => {
         this.projectHttp.updateProject({
@@ -93,9 +98,6 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
   private initialComponentsRender() {
 
     const query = this.router.snapshot.paramMap.get('id');
-
-    this.complexShapeRendererService.complexShapeRenderer.appendDynamicComponentToContainer(CommentComponent,
-      { ...defaultComplexShapeRenderingOptionsFactory(), type: 'comment', property: { width: 300, height: 300 } })
 
     this.projectHttp.getProject(query)
       .pipe(
