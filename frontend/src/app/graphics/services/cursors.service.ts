@@ -97,6 +97,7 @@ export class CursorsService {
     if (!this.isCoop) {
       this.disconnect();
     } else {
+      this.ws.createConnection();
       this.connect(this.complexShapeRenderer.container);
     }
   }
