@@ -20,7 +20,7 @@ from rostelecom.views import ProjectView, ProjectDetailView
 
 urlpatterns = [
   path('api/', include([
-    path('api/projects/', ProjectView.as_view()),
-    path('api/projects/<guid>', ProjectDetailView.as_view()),
+    path('projects/', ProjectView.as_view()),
+    path('projects/<guid>', ProjectDetailView.as_view()),
   ])),
 ]
