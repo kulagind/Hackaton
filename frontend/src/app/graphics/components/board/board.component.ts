@@ -95,7 +95,7 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
       .listenShapeChanges()
       .subscribe((shape: any) => {
         const component = document.getElementById(shape.id);
-
+        console.log('ss')
         component.setAttribute('x', shape.x);
         component.setAttribute('y', shape.y);
       })
