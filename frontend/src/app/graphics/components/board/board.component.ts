@@ -22,6 +22,9 @@ import { Project } from '../../../projects/components/projects/projects.componen
 import { CommentComponent } from '../comment/comment.component';
 import { defaultGraphicComponentsPropertiesFactory } from '../../functions/default-graphic-components-properties.factory';
 import { defaultComplexShapeRenderingOptionsFactory } from '../../functions/default-complex-shape-render-options.factory';
+import { fromEvent } from 'rxjs';
+import { globalOptions } from '../toolbar/toolbar.component';
+import { transform } from '../../functions/transform.fuction';
 
 @Component({
   selector: 'app-board',
@@ -70,6 +73,8 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
     this.initialComponentsRender();
     this.snapshotObserverService.processInfinityObserve();
 
+    this.appendCommentAfterClick();
+
     this.snapshotObserverService.components$
       .subscribe(components => {
         this.projectHttp.updateProject({
@@ -106,6 +111,21 @@ export class BoardComponent implements AfterViewInit, OnDestroy {
           }
         }
       });
+  }
+
+  public appendCommentAfterClick() {
+    fromEvent<MouseEvent>(this.container.nativeElement, 'click')
+      .subscribe(click => {
+        if (globalOptions.comment) {
+
+          const { clientX, clientY } = click;
+          const position = transform({ x: clientX, y: clientY })(this.container.nativeElement);
+
+          this.complexShapeRendererService.complexShapeRenderer.appendDynamicComponentToContainer(CommentComponent,
+            { type: 'comment', property: { width: 60, height: 120 }, x: position.x, y: position.y });
+
+        }
+      })
   }
 
 
