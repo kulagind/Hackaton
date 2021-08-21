@@ -76,4 +76,10 @@ services:
         command: bash -c "python manage.py migrate && gunicorn -c gunicorn.py backend.wsgi"
         depends_on:
           - postgres
-
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet:  172.17.0.1
