@@ -5,7 +5,7 @@ from rostelecom.project_manager import ProjectManager
 
 class ProjectView(APIView):
 
-  def get(self):
+  def get(self, request):
     data = ProjectManager().get_all_project()
     return Response(status=200, data=data)
 
