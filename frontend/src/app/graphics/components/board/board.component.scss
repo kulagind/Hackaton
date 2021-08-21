@@ -5,6 +5,7 @@
   justify-content: space-between;
   width: 100%;
   height: 100vh;
+
   &-container {
     flex: 1;
   }
@@ -32,4 +33,13 @@
   height: 100%;
   left: 0;
   top: 0;
+  z-index: 2;
+}
+
+.list {
+  position: absolute;
+  height: 100%;
+  left: 56px;
+  top: 0;
+  z-index: 1;
 }

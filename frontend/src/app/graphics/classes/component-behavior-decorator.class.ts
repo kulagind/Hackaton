@@ -4,6 +4,7 @@ import { fromEvent } from 'rxjs';
 import { keys, Position } from './view-drag.class';
 import { transform } from '../functions/transform.fuction';
 import { globalOptions } from '../components/toolbar/toolbar.component';
+import { GlobalDataService } from '../services/snapshot-observer.service';
 
 export class ComponentBehaviorDecorator {
   constructor(private readonly target: Container, private readonly overlay: SVGSVGElement, private readonly source?: HTMLElement) {
@@ -51,7 +52,7 @@ export class ComponentDragSource {
 
             return transform(isPlatform || !globalOptions.bootstrap ? transferred : positionWithBootstrap)(this.global);
           }),
-          takeUntil(fromEvent(window, 'mouseup'))
+          takeUntil(fromEvent(window, 'mouseup').pipe(tap(() => GlobalDataService.changes$.next())))
         )
       })
     );

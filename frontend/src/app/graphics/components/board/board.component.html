@@ -12,6 +12,7 @@
   </svg>
 
   <app-toolbar class="toolbar"></app-toolbar>
+  <app-element-list *ngIf="toolbarIsOpen$ | async" class="list"></app-element-list>
   <app-sidebar class="sidebar"></app-sidebar>
 
 </div>
