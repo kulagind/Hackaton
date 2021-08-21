@@ -24,9 +24,11 @@ export class ComponentBehaviorDecorator {
     dragable.enter$
       .pipe(
         mergeMap(_ => {
-          return dragable.move$
+          return dragable.clearDrag$
         }),
         mergeMap(_ => {
+          console.log(_);
+          
           return dragable.leave$
         }),
         tap(_ => {
@@ -44,7 +46,8 @@ export class ComponentDragSource {
   public readonly type = this.target.getAttribute('type');
 
   public readonly move$ = fromEvent<MouseEvent>(window, 'mousemove');
-  public readonly leave$ = fromEvent<MouseEvent>(window, 'mouseleave');
+  public readonly leave$ = fromEvent<MouseEvent>(this.target, 'mouseleave');
+  public readonly clearDrag$ = fromEvent<MouseEvent>(this.target, 'mousemove').pipe(throttleTime(200));
   public readonly drag$ = fromEvent<MouseEvent>(this.target, 'mousedown')
     .pipe(
       filter(down => !keys.includes(down.which)),
