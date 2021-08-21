@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from 'src/app/graphics/services/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private _name: string = 'Anonymus';
+  private readonly _defaultName: string = 'Anonymus' + Date.now();
+  private _name: string = 'Anonymus' + Date.now();
 
-  constructor() {
-    this._name += Date.now();
+  constructor(
+    private localStorage: LocalStorageService
+  ) {
+    this._name = this.localStorage.getName() || this._defaultName;
   }
 
   get name(): string {
@@ -17,5 +21,6 @@ export class AuthService {
 
   set name(name: string) {
     this._name = name;
+    this.localStorage.saveName(name || this._defaultName);
   }
 }

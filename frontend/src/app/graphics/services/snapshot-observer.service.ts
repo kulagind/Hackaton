@@ -60,6 +60,7 @@ export class SnapshotObserverService {
           property: {
             width: +value.getAttribute('width'),
             height: +value.getAttribute('height'),
+            content: value.innerHTML || '',
           }
         }
       }

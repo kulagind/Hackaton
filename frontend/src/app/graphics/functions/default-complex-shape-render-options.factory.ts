@@ -6,7 +6,8 @@ export function defaultComplexShapeRenderingOptionsFactory(): ComplexShapeRender
     y: 340,
     property: {
       width: 60,
-      height: 60
+      height: 60,
+      content: ''
     }
   }
 }

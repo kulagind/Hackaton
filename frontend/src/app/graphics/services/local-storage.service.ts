@@ -18,4 +18,12 @@ export class LocalStorageService {
     return JSON.parse(localStorage.getItem('components'));
   }
 
+  saveName(name: string): void {
+    localStorage.setItem('name', name);
+  }
+
+  getName(): string {
+    return localStorage.getItem('name')
+  }
+
 }

@@ -48,7 +48,6 @@ export class ComplexShapeRenderer {
 
     this.container.append(container);
     GlobalDataService.changes$.next();
-
   }
 
 }
@@ -70,6 +69,12 @@ export class DynamicComponentContainerDecorator {
     this.target.setAttribute('height', options.property.height.toString());
     this.target.setAttribute('type', options.type);
     this.target.setAttribute('id', options.id);
+    
+    if (options.property.content) {
+      // @ts-ignore
+      this.target.innerHTML = options.property.content;
+    }
+    
 
     this.target.classList.add('ui-element-container');
 

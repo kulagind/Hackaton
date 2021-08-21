@@ -7,6 +7,7 @@ export type ComplexShapeRenderOptions = Readonly<{
 
   property: {
     width: Readonly<number>;
-    height: Readonly<number>
+    height: Readonly<number>;
+    content?: string
   }
 }>

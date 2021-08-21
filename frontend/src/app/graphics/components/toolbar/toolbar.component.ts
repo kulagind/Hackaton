@@ -3,7 +3,7 @@ import { CursorsService } from '../../services/cursors.service';
 import { GlobalDataService } from '../../services/snapshot-observer.service';
 
 export const globalOptions = {
-  bootstrap: true,
+  bootstrap: false,
   comment: false,
 };
 
