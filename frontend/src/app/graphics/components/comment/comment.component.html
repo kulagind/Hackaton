@@ -1,0 +1,9 @@
+<div class="comment">
+
+  <mat-icon class="comment-icon" (mouseenter)="open()" (mouseleave)="close()">place</mat-icon>
+
+  <div class="message" *ngIf="show$ | async">
+    <p class="body-l"> Это комментарий </p>
+  </div>
+
+</div>

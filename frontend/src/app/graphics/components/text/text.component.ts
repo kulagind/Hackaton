@@ -9,13 +9,15 @@ import { InputComponent } from '../../../shared/modules/controls/components/inpu
 import { ToggleComponent } from '../../../shared/modules/controls/components/toggle/toggle.component';
 import { ButtonComponent } from '../../../shared/modules/buttons/components/button/button.component';
 import { bootstrap } from '../../classes/component-behavior-decorator.class';
+import { HeaderComponent } from 'src/app/shared/modules/controls/components/header/header.component';
+import { TextComponent } from 'src/app/shared/modules/controls/components/text/text.component';
 
 @Component({
-  selector: 'app-text',
+  selector: 'app-texts',
   templateUrl: './text.component.html',
   styleUrls: ['./text.component.scss']
 })
-export class TextComponent {
+export class TextsComponent {
   private pickupPositionInElement: Position;
 
   @ViewChild('mobile')
@@ -45,7 +47,7 @@ export class TextComponent {
 
     this.complexShapeRendererService
       .complexShapeRenderer
-      .appendDynamicComponentToContainer(ToggleComponent, options);
+      .appendDynamicComponentToContainer(HeaderComponent, options);
   }
 
   public handleTextDrop(event: CdkDragDrop<any>) {
@@ -68,7 +70,7 @@ export class TextComponent {
 
     this.complexShapeRendererService
       .complexShapeRenderer
-      .appendDynamicComponentToContainer(ButtonComponent, options);
+      .appendDynamicComponentToContainer(TextComponent, options);
 
   }
 

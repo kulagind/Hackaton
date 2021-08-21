@@ -13,6 +13,10 @@
   }
 }
 
+.color {
+  color: $grayscale-10;
+}
+
 .platform {
   &_mobile {
     width: 97px;

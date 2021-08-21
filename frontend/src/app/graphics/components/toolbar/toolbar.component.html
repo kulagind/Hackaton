@@ -12,8 +12,8 @@
     </mat-icon>
   </button>
 
-  <button mat-icon-button class="margin-bottom icon-button">
-    <mat-icon class="icon">
+  <button mat-icon-button class="margin-bottom icon-button" (click)="toggleComment()">
+    <mat-icon class="icon" [ngClass]="{'active': globalOptions.comment}">
       chat_bubble
     </mat-icon>
   </button>
