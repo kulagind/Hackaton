@@ -73,7 +73,8 @@ services:
         ports:
             - 8000:8000
 # запускаем gunicorn
-        command: bash -c "python manage.py migrate && gunicorn -c gunicorn.py backend.wsgi"
+        #python manage.py migrate &&
+        command: bash -c "gunicorn -c gunicorn.py backend.wsgi"
         depends_on:
           - postgres
 networks:
